@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What We Craft - Brandomize | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #0f172a;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 1px 20px rgba(15, 23, 42, 0.08);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-logo h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-logo a {
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: none;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .nav-menu {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #6366f1;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-buttons {
+            display: none;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .nav-buttons {
+                display: flex;
+            }
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.4s ease;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.8);
+            color: #475569;
+            border: 1px solid rgba(15, 23, 42, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 1);
+            color: #6366f1;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.1);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            border: 1px solid #25D366;
+            gap: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-whatsapp:hover {
+            background: #22C55E;
+            border-color: #22C55E;
+            transform: translateY(-1px);
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Section Styling */
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 640px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        .section-description {
+            text-align: center;
+            font-size: 1.125rem;
+            color: #64748b;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+
+        /* Case Studies Section */
+        .case-studies {
+            padding: 8rem 0 6rem;
+            background: white;
+        }
+
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .case-studies-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .case-studies-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        .case-study-card {
+            background: white;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+            position: relative;
+        }
+
+        .case-study-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.02) 0%, rgba(139, 92, 246, 0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(99, 102, 241, 0.15);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .case-study-card:hover::before {
+            opacity: 1;
+        }
+
+        .video-section {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .video-placeholder:hover {
+            background: linear-gradient(135deg, #334155 0%, #475569 50%, #64748b 100%);
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e293b;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .play-button:hover {
+            background: white;
+            transform: translate(-50%, -50%) scale(1.15);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 2rem 1.5rem 1.5rem;
+            color: white;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .case-study-content {
+            padding: 2rem 2rem 1.5rem 2rem;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+        }
+
+        .case-study-tag {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            align-self: flex-start;
+        }
+
+        .case-study-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: #0f172a;
+            line-height: 1.3;
+        }
+
+        .case-study-content p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+
+        .case-study-metrics {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0;
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
+        }
+
+        .metric {
+            text-align: center;
+            flex: 1;
+        }
+
+        .metric-number {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #6366f1;
+            display: block;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
+        }
+
+        /* Websites Section */
+        .websites-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .websites-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .websites-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .websites-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        .website-card {
+            background: white;
+            border: 1px solid rgba(15, 23, 42, 0.06);
+            border-radius: 2rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 4px 25px rgba(15, 23, 42, 0.04);
+        }
+
+        .website-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, rgba(139, 92, 246, 0.03) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .website-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.15);
+            border-color: rgba(99, 102, 241, 0.15);
+        }
+
+        .website-card:hover::before {
+            opacity: 1;
+        }
+
+        .website-preview {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .website-image {
+            width: 100%;
+            aspect-ratio: 16/10;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screen-recording {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            transition: all 0.4s ease;
+        }
+
+        .browser-frame {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 0.75rem 0.75rem 0 0;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.1);
+            position: relative;
+        }
+
+        .browser-header {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+        }
+
+        .browser-dots {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .browser-dots span {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .browser-dots span:nth-child(1) {
+            background: #ef4444;
+        }
+
+        .browser-dots span:nth-child(2) {
+            background: #f59e0b;
+        }
+
+        .browser-dots span:nth-child(3) {
+            background: #10b981;
+        }
+
+        .website-card:hover .browser-dots span {
+            transform: scale(1.2);
+        }
+
+        .browser-url {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+            color: #64748b;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            font-weight: 500;
+        }
+
+        .website-content {
+            padding: 2.5rem 2rem;
+            height: calc(100% - 4rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+
+        .content-preview {
+            text-align: center;
+        }
+
+        .preview-header {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.75rem;
+        }
+
+        .preview-text {
+            font-size: 1rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .preview-button {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .website-card:hover .preview-button {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(4px);
+        }
+
+        .website-card:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .play-button-website {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .play-button-website:hover {
+            background: white;
+            transform: scale(1.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .play-text {
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .website-info {
+            padding: 2rem 2rem 2rem 2rem;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+        }
+
+        .website-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            align-self: flex-start;
+        }
+
+        .website-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 1.25rem;
+            line-height: 1.3;
+        }
+
+        .website-info p {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+
+        .website-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: auto;
+        }
+
+        .feature-badge {
+            background: rgba(99, 102, 241, 0.08);
+            color: #6366f1;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            transition: all 0.3s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .feature-badge:hover {
+            background: rgba(99, 102, 241, 0.12);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Product Photography Section */
+        .product-photography {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+        }
+
+        @media (max-width: 767px) {
+            .product-photography {
+                padding: 3rem 0;
+            }
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .product-grid {
+                gap: 2.5rem;
+            }
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .product-image {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1; /* 1:1 aspect ratio for square images */
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 1rem 1rem 0 0;
+        }
+
+        /* Image Gallery Styles */
+        .image-gallery {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .gallery-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        /* Gallery Navigation */
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .product-card:hover .gallery-nav {
+            opacity: 1;
+        }
+
+        .gallery-nav:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-nav.prev {
+            left: 10px;
+        }
+
+        .gallery-nav.next {
+            right: 10px;
+        }
+
+        .gallery-nav svg {
+            width: 16px;
+            height: 16px;
+            color: #374151;
+        }
+
+        /* Gallery Dots */
+        .gallery-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        .gallery-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-dot.active {
+            background: rgba(255, 255, 255, 0.9);
+            transform: scale(1.2);
+        }
+
+        /* Hide navigation for single image */
+        .single-image .gallery-nav,
+        .single-image .gallery-dots {
+            display: none;
+        }
+
+        .product-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .product-card:hover .product-placeholder::before {
+            left: 100%;
+        }
+
+
+        .product-info {
+            padding: 2rem;
+        }
+
+        @media (max-width: 767px) {
+            .product-info {
+                padding: 1.5rem;
+            }
+        }
+
+        .product-category {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #6366f1;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-stat {
+            text-align: center;
+        }
+
+        .product-stat-number {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #0f172a;
+            display: block;
+        }
+
+        .product-stat-label {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
+
+        .product-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .product-tag {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 4rem 0 2rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+        }
+
+        .hamburger span {
+            width: 1.5rem;
+            height: 2px;
+            background: #475569;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        @media (max-width: 767px) {
+            .nav-menu.active {
+                display: flex;
+                position: fixed;
+                top: 5rem;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 40px rgba(15, 23, 42, 0.1);
+                z-index: 999;
+                gap: 1.5rem;
+            }
+            
+            .nav-buttons {
+                display: none !important;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .case-study-content h2 {
+                font-size: 1.25rem;
+            }
+            
+            .website-info h3 {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Animation states */
+        .animate-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html"><span class="highlight">Brandomize</span></a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="what-we-craft.html" class="nav-link active">What We Craft</a></li>
+                <li><a href="our-process.html" class="nav-link">Our Process</a></li>
+                <li><a href="#" class="nav-link">Blog</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="https://wa.me/919034192379?text=Hi%20Brandomize!%20I%27m%20interested%20in%20your%20marketing%20services.%20Can%20we%20discuss%20my%20project?" target="_blank" class="btn btn-whatsapp">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.347" fill="currentColor"/>
+                    </svg>
+                    WhatsApp
+                </a>
+                <a href="https://wa.me/919034192379?text=Hi%20Brandomize!%20I%27d%20like%20to%20get%20started%20with%20your%20services.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Get Started</a>
+            </div>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+
+    <!-- Case Studies Section -->
+    <section class="case-studies">
+        <div class="container">
+            <h2 class="section-title">Video Campaign <span class="highlight">Success</span> Stories</h2>
+            <p class="section-description">Real campaigns that delivered measurable results and drove business growth for our clients</p>
+            <div class="case-studies-grid">
+                <!-- Case Study 1 -->
+                <div class="case-study-card">
+                    <div class="video-section">
+                        <div class="video-placeholder" data-video="maruti-fronx">
+                            <div class="play-button">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 5v14l11-7z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="video-overlay">
+                                <span>Maruti Fronx Launch Campaign</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-study-content">
+                        <div class="case-study-tag">Case Study</div>
+                        <h2>Launch Magic for Maruti Fronx</h2>
+                        <p>Created launch campaign video, showing car's features, local appeal, and helped attract 100+ showroom visits in first week</p>
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-number">100+</span>
+                                <span class="metric-label">Showroom Visits</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-number">1 Week</span>
+                                <span class="metric-label">Timeline</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="case-study-card">
+                    <div class="video-section">
+                        <div class="video-placeholder" data-video="cp-plus">
+                            <div class="play-button">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 5v14l11-7z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="video-overlay">
+                                <span>CP Plus Security Campaign</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-study-content">
+                        <div class="case-study-tag">Case Study</div>
+                        <h2>Building Trust with CP Plus</h2>
+                        <p>Video for CP Plus, focused on safety and convenience—shared by 20+ distributors in area.</p>
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-number">20+</span>
+                                <span class="metric-label">Distributors</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-number">Trust</span>
+                                <span class="metric-label">Focus</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 3 -->
+                <div class="case-study-card">
+                    <div class="video-section">
+                        <div class="video-placeholder" data-video="kangaroo">
+                            <div class="play-button">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 5v14l11-7z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="video-overlay">
+                                <span>Kangaroo <span class="highlight">Brand</span> Story Campaign</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-study-content">
+                        <div class="case-study-tag">Case Study</div>
+                        <h2>Boosting Local <span class="highlight">Brand</span> Awareness – Kangaroo</h2>
+                        <p>Used social storytelling and product highlights, leading to 30% more shop inquiries after campaign.</p>
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-number">30%</span>
+                                <span class="metric-label">More Inquiries</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-number">Local</span>
+                                <span class="metric-label">Focus</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Websites Section -->
+    <section class="websites-section">
+        <div class="container">
+            <h2 class="section-title">Digital <span class="highlight">Experiences</span> We've Built</h2>
+            <p class="section-description">Modern, responsive websites designed to convert visitors into customers and drive business growth</p>
+            <div class="websites-grid">
+                <!-- Website 1 -->
+                <div class="website-card">
+                    <div class="website-preview" data-url="https://brandomizestudio.wixstudio.com/brandomize">
+                        <div class="website-image">
+                            <div class="screen-recording">
+                                <div class="browser-frame">
+                                    <div class="browser-header">
+                                        <div class="browser-dots">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                        <div class="browser-url">brandomizestudio.com</div>
+                                    </div>
+                                    <div class="website-content">
+                                        <div class="content-preview">
+                                            <div class="preview-header">BRANDOMIZE</div>
+                                            <div class="preview-text">AI-powered digital marketing</div>
+                                            <div class="preview-button">Get Started</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="play-overlay">
+                                    <div class="play-button-website">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 5v14l11-7z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                    <span class="play-text">Click to Visit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="website-info">
+                        <div class="website-tag">Live Website</div>
+                        <h3><span class="highlight">Brandomize</span> Studio</h3>
+                        <p>Our own company website showcasing AI-powered digital marketing services with modern design and smooth user experience.</p>
+                        <div class="website-features">
+                            <span class="feature-badge">Responsive</span>
+                            <span class="feature-badge">Modern UI</span>
+                            <span class="feature-badge">Fast Loading</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Website 2 -->
+                <div class="website-card">
+                    <div class="website-preview" data-url="https://example-client1.com">
+                        <div class="website-image">
+                            <div class="screen-recording">
+                                <div class="browser-frame">
+                                    <div class="browser-header">
+                                        <div class="browser-dots">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                        <div class="browser-url">techflow-solutions.com</div>
+                                    </div>
+                                    <div class="website-content">
+                                        <div class="content-preview">
+                                            <div class="preview-header">TechFlow</div>
+                                            <div class="preview-text">Enterprise Solutions</div>
+                                            <div class="preview-button">Learn More</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="play-overlay">
+                                    <div class="play-button-website">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 5v14l11-7z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                    <span class="play-text">Click to Visit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="website-info">
+                        <div class="website-tag">Corporate</div>
+                        <h3>TechFlow Solutions</h3>
+                        <p>Corporate website for enterprise software company featuring clean design, lead generation forms, and conversion optimization.</p>
+                        <div class="website-features">
+                            <span class="feature-badge">Lead Generation</span>
+                            <span class="feature-badge">Corporate</span>
+                            <span class="feature-badge">CRO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Website 3 -->
+                <div class="website-card">
+                    <div class="website-preview" data-url="https://example-client2.com">
+                        <div class="website-image">
+                            <div class="screen-recording">
+                                <div class="browser-frame">
+                                    <div class="browser-header">
+                                        <div class="browser-dots">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                        <div class="browser-url">greenspace.co</div>
+                                    </div>
+                                    <div class="website-content">
+                                        <div class="content-preview">
+                                            <div class="preview-header">GreenSpace</div>
+                                            <div class="preview-text">Sustainable Living</div>
+                                            <div class="preview-button">Shop Now</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="play-overlay">
+                                    <div class="play-button-website">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 5v14l11-7z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                    <span class="play-text">Click to Visit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="website-info">
+                        <div class="website-tag">E-commerce</div>
+                        <h3>GreenSpace Co.</h3>
+                        <p>E-commerce platform for sustainable products with integrated shopping cart, payment gateway, and inventory management.</p>
+                        <div class="website-features">
+                            <span class="feature-badge">E-commerce</span>
+                            <span class="feature-badge">Payment Gateway</span>
+                            <span class="feature-badge">Inventory</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Website 4 -->
+                <div class="website-card">
+                    <div class="website-preview" data-url="https://example-client3.com">
+                        <div class="website-image">
+                            <div class="screen-recording">
+                                <div class="browser-frame">
+                                    <div class="browser-header">
+                                        <div class="browser-dots">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                        <div class="browser-url">tastepalace.com</div>
+                                    </div>
+                                    <div class="website-content">
+                                        <div class="content-preview">
+                                            <div class="preview-header">Taste Palace</div>
+                                            <div class="preview-text">Authentic Indian Cuisine</div>
+                                            <div class="preview-button">Order Online</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="play-overlay">
+                                    <div class="play-button-website">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 5v14l11-7z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                    <span class="play-text">Click to Visit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="website-info">
+                        <div class="website-tag">Restaurant</div>
+                        <h3>Taste Palace</h3>
+                        <p>Local restaurant website with online ordering system, menu showcase, and reservation booking functionality.</p>
+                        <div class="website-features">
+                            <span class="feature-badge">Online Orders</span>
+                            <span class="feature-badge">Reservations</span>
+                            <span class="feature-badge">Local SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Website 5 -->
+                <div class="website-card">
+                    <div class="website-preview" data-url="https://example-client4.com">
+                        <div class="website-image">
+                            <div class="screen-recording">
+                                <div class="browser-frame">
+                                    <div class="browser-header">
+                                        <div class="browser-dots">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                        <div class="browser-url">fitzone.studio</div>
+                                    </div>
+                                    <div class="website-content">
+                                        <div class="content-preview">
+                                            <div class="preview-header">FitZone</div>
+                                            <div class="preview-text">Transform Your Body</div>
+                                            <div class="preview-button">Join Now</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="play-overlay">
+                                    <div class="play-button-website">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 5v14l11-7z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                    <span class="play-text">Click to Visit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="website-info">
+                        <div class="website-tag">Fitness</div>
+                        <h3>FitZone Studio</h3>
+                        <p>Modern fitness studio website with class booking system, trainer profiles, and membership management portal.</p>
+                        <div class="website-features">
+                            <span class="feature-badge">Class Booking</span>
+                            <span class="feature-badge">Memberships</span>
+                            <span class="feature-badge">Mobile App</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Website 6 -->
+                <div class="website-card">
+                    <div class="website-preview" data-url="https://example-client5.com">
+                        <div class="website-image">
+                            <div class="screen-recording">
+                                <div class="browser-frame">
+                                    <div class="browser-header">
+                                        <div class="browser-dots">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                        <div class="browser-url">eduhub.learning</div>
+                                    </div>
+                                    <div class="website-content">
+                                        <div class="content-preview">
+                                            <div class="preview-header">EduHub</div>
+                                            <div class="preview-text">Learn & Grow</div>
+                                            <div class="preview-button">Enroll Now</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="play-overlay">
+                                    <div class="play-button-website">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 5v14l11-7z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                    <span class="play-text">Click to Visit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="website-info">
+                        <div class="website-tag">Education</div>
+                        <h3>EduHub Learning</h3>
+                        <p>Online education platform with course management, student portals, and interactive learning modules.</p>
+                        <div class="website-features">
+                            <span class="feature-badge">LMS</span>
+                            <span class="feature-badge">Student Portal</span>
+                            <span class="feature-badge">Interactive</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Photography Section -->
+    <section class="product-photography">
+        <div class="container">
+            <h2 class="section-title">Professional <span class="highlight">Product Photography</span></h2>
+            <p class="section-description">Stunning product visuals that showcase your brand's quality and drive sales through compelling imagery</p>
+            <div class="product-grid">
+                <!-- Product Photo 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="image-gallery" data-gallery="fan-gallery">
+                            <div class="gallery-container">
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Fan/01.png" alt="Study Fan Product Photography - View 1" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Fan/02.png" alt="Study Fan Product Photography - View 2" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Fan/03.png" alt="Study Fan Product Photography - View 3" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Fan/04.png" alt="Study Fan Product Photography - View 4" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Fan/05.png" alt="Study Fan Product Photography - View 5" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Fan/06.png" alt="Study Fan Product Photography - View 6" class="product-img">
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Arrows -->
+                            <button class="gallery-nav prev" onclick="previousSlide('fan-gallery')">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="gallery-nav next" onclick="nextSlide('fan-gallery')">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            
+                            <!-- Dots Indicator -->
+                            <div class="gallery-dots">
+                                <span class="gallery-dot active" onclick="currentSlide('fan-gallery', 1)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('fan-gallery', 2)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('fan-gallery', 3)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('fan-gallery', 4)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('fan-gallery', 5)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('fan-gallery', 6)"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Home Appliances</div>
+                        <h3 class="product-title">Study Fan Collection</h3>
+                        <p class="product-description">Professional product photography showcasing modern study fans with clean backgrounds and detailed shots.</p>
+                        <div class="product-stats">
+                            <div class="product-stat">
+                                <span class="product-stat-number">6+</span>
+                                <span class="product-stat-label">Angles</span>
+                            </div>
+                            <div class="product-stat">
+                                <span class="product-stat-number">4K</span>
+                                <span class="product-stat-label">Resolution</span>
+                            </div>
+                            <div class="product-stat">
+                                <span class="product-stat-number">Clean</span>
+                                <span class="product-stat-label">Background</span>
+                            </div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="product-tag">Clean Background</span>
+                            <span class="product-tag">Multiple Angles</span>
+                            <span class="product-tag">Product Focus</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Photo 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="image-gallery" data-gallery="pedicure-gallery">
+                            <div class="gallery-container">
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Pedicure Tool/01.png" alt="Pedicure Tool Product Photography - View 1" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Pedicure Tool/02.png" alt="Pedicure Tool Product Photography - View 2" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Pedicure Tool/03.png" alt="Pedicure Tool Product Photography - View 3" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Pedicure Tool/04.png" alt="Pedicure Tool Product Photography - View 4" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Pedicure Tool/05.png" alt="Pedicure Tool Product Photography - View 5" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Pedicure Tool/06.png" alt="Pedicure Tool Product Photography - View 6" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Pedicure Tool/07.png" alt="Pedicure Tool Product Photography - View 7" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Pedicure Tool/08.png" alt="Pedicure Tool Product Photography - View 8" class="product-img">
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Arrows -->
+                            <button class="gallery-nav prev" onclick="previousSlide('pedicure-gallery')">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="gallery-nav next" onclick="nextSlide('pedicure-gallery')">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            
+                            <!-- Dots Indicator -->
+                            <div class="gallery-dots">
+                                <span class="gallery-dot active" onclick="currentSlide('pedicure-gallery', 1)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('pedicure-gallery', 2)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('pedicure-gallery', 3)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('pedicure-gallery', 4)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('pedicure-gallery', 5)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('pedicure-gallery', 6)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('pedicure-gallery', 7)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('pedicure-gallery', 8)"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Beauty & Personal Care</div>
+                        <h3 class="product-title">Pedicure Tool Collection</h3>
+                        <p class="product-description">Professional pedicure tool photography showcasing precision instruments for foot care and beauty treatments.</p>
+                        <div class="product-stats">
+                            <div class="product-stat">
+                                <span class="product-stat-number">8+</span>
+                                <span class="product-stat-label">Views</span>
+                            </div>
+                            <div class="product-stat">
+                                <span class="product-stat-number">Detail</span>
+                                <span class="product-stat-label">Focus</span>
+                            </div>
+                            <div class="product-stat">
+                                <span class="product-stat-number">Clean</span>
+                                <span class="product-stat-label">Setup</span>
+                            </div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="product-tag">Precision Tools</span>
+                            <span class="product-tag">Multiple Angles</span>
+                            <span class="product-tag">Professional Setup</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Photo 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="image-gallery" data-gallery="water-gun-gallery">
+                            <div class="gallery-container">
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Water Gun/01.png" alt="Water Gun Product Photography - View 1" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Water Gun/02.png" alt="Water Gun Product Photography - View 2" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Water Gun/03.png" alt="Water Gun Product Photography - View 3" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Water Gun/04.png" alt="Water Gun Product Photography - View 4" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Water Gun/05.png" alt="Water Gun Product Photography - View 5" class="product-img">
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Arrows -->
+                            <button class="gallery-nav prev" onclick="previousSlide('water-gun-gallery')">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="gallery-nav next" onclick="nextSlide('water-gun-gallery')">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            
+                            <!-- Dots Indicator -->
+                            <div class="gallery-dots">
+                                <span class="gallery-dot active" onclick="currentSlide('water-gun-gallery', 1)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('water-gun-gallery', 2)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('water-gun-gallery', 3)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('water-gun-gallery', 4)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('water-gun-gallery', 5)"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Toys & Recreation</div>
+                        <h3 class="product-title">Water Gun Collection</h3>
+                        <p class="product-description">Fun water gun photography showcasing colorful designs and action-ready toys for summer recreation.</p>
+                        <div class="product-stats">
+                            <div class="product-stat">
+                                <span class="product-stat-number">5+</span>
+                                <span class="product-stat-label">Views</span>
+                            </div>
+                            <div class="product-stat">
+                                <span class="product-stat-number">Colorful</span>
+                                <span class="product-stat-label">Design</span>
+                            </div>
+                            <div class="product-stat">
+                                <span class="product-stat-number">Action</span>
+                                <span class="product-stat-label">Ready</span>
+                            </div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="product-tag">Summer Fun</span>
+                            <span class="product-tag">Vibrant Colors</span>
+                            <span class="product-tag">Action Shots</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Photo 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="image-gallery" data-gallery="tiffin-gallery">
+                            <div class="gallery-container">
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Tiffin/1.png" alt="Tiffin Box Product Photography - View 1" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Tiffin/2.png" alt="Tiffin Box Product Photography - View 2" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Tiffin/3.png" alt="Tiffin Box Product Photography - View 3" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Tiffin/4.png" alt="Tiffin Box Product Photography - View 4" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Tiffin/5.png" alt="Tiffin Box Product Photography - View 5" class="product-img">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="public/product-images/Tiffin/6.png" alt="Tiffin Box Product Photography - View 6" class="product-img">
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Arrows -->
+                            <button class="gallery-nav prev" onclick="previousSlide('tiffin-gallery')">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="gallery-nav next" onclick="nextSlide('tiffin-gallery')">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            
+                            <!-- Dots Indicator -->
+                            <div class="gallery-dots">
+                                <span class="gallery-dot active" onclick="currentSlide('tiffin-gallery', 1)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('tiffin-gallery', 2)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('tiffin-gallery', 3)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('tiffin-gallery', 4)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('tiffin-gallery', 5)"></span>
+                                <span class="gallery-dot" onclick="currentSlide('tiffin-gallery', 6)"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Kitchen & Dining</div>
+                        <h3 class="product-title">Tiffin Box Collection</h3>
+                        <p class="product-description">Stylish tiffin box photography showcasing practical lunch containers with modern design and functionality.</p>
+                        <div class="product-stats">
+                            <div class="product-stat">
+                                <span class="product-stat-number">6+</span>
+                                <span class="product-stat-label">Views</span>
+                            </div>
+                            <div class="product-stat">
+                                <span class="product-stat-number">Practical</span>
+                                <span class="product-stat-label">Design</span>
+                            </div>
+                            <div class="product-stat">
+                                <span class="product-stat-number">Multi</span>
+                                <span class="product-stat-label">Layer</span>
+                            </div>
+                        </div>
+                        <div class="product-tags">
+                            <span class="product-tag">Lunch Containers</span>
+                            <span class="product-tag">Practical Design</span>
+                            <span class="product-tag">Modern Style</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><span class="highlight">Brandomize</span></h3>
+                    <p>AI-powered digital marketing agency turning ideas into trusted <span class="highlight">brands</span>.</p>
+                    <p>brandomize.studio@gmail.com</p>
+                    <p>Mob. +91 9034192379</p>
+                    <p>Sector 15, Hisar Haryana</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <p>Video Production</p>
+                    <p>Website Development</p>
+                    <p>Social Media Content</p>
+                    <p><span class="highlight">Brand</span> Campaigns</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Portfolio</h3>
+                    <p><a href="what-we-craft.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">What We Craft</a></p>
+                    <p><a href="our-process.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">Our Process</a></p>
+                    <p><a href="index.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">Home</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 <span class="highlight">Brandomize</span>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close menu when clicking on nav links
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('scrolled', window.pageYOffset > 50);
+        });
+
+        // Inline video functionality
+        const videoPlaceholders = document.querySelectorAll('.video-placeholder');
+        const videoUrls = {
+            'maruti-fronx': 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            'cp-plus': 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            'kangaroo': 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        };
+
+        videoPlaceholders.forEach(placeholder => {
+            placeholder.addEventListener('click', function() {
+                const videoId = this.dataset.video;
+                
+                if (videoUrls[videoId]) {
+                    this.innerHTML = `
+                        <iframe 
+                            style="width: 100%; height: 100%; border: none;" 
+                            src="${videoUrls[videoId]}?autoplay=1&rel=0" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    `;
+                } else {
+                    this.innerHTML = `
+                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: white; font-size: 1.125rem; font-weight: 600; text-align: center;">
+                            🎬 Playing: ${this.querySelector('.video-overlay span').textContent}
+                            <br><br>
+                            <small style="opacity: 0.8; font-size: 0.9rem;">Video content would play here</small>
+                        </div>
+                    `;
+                }
+                
+                this.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+
+        // Website redirect functionality
+        const websitePreviews = document.querySelectorAll('.website-preview');
+        
+        websitePreviews.forEach(preview => {
+            preview.addEventListener('click', function() {
+                const url = this.dataset.url;
+                if (url) {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        window.open(url, '_blank');
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                }
+            });
+        });
+    </script>
+    <script src="scroll-animations.js"></script>
+    
+    <!-- Product Gallery JavaScript -->
+    <script>
+        // Gallery functionality
+        const galleries = {};
+        
+        // Initialize galleries
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryElements = document.querySelectorAll('[data-gallery]');
+            galleryElements.forEach(gallery => {
+                const galleryId = gallery.getAttribute('data-gallery');
+                galleries[galleryId] = {
+                    currentSlide: 0,
+                    totalSlides: gallery.querySelectorAll('.gallery-slide').length,
+                    container: gallery.querySelector('.gallery-container'),
+                    dots: gallery.querySelectorAll('.gallery-dot')
+                };
+            });
+        });
+        
+        function nextSlide(galleryId) {
+            const gallery = galleries[galleryId];
+            if (!gallery) return;
+            
+            gallery.currentSlide = (gallery.currentSlide + 1) % gallery.totalSlides;
+            updateGallery(galleryId);
+        }
+        
+        function previousSlide(galleryId) {
+            const gallery = galleries[galleryId];
+            if (!gallery) return;
+            
+            gallery.currentSlide = (gallery.currentSlide - 1 + gallery.totalSlides) % gallery.totalSlides;
+            updateGallery(galleryId);
+        }
+        
+        function currentSlide(galleryId, slideIndex) {
+            const gallery = galleries[galleryId];
+            if (!gallery) return;
+            
+            gallery.currentSlide = slideIndex - 1;
+            updateGallery(galleryId);
+        }
+        
+        function updateGallery(galleryId) {
+            const gallery = galleries[galleryId];
+            if (!gallery) return;
+            
+            // Update container position
+            const translateX = -gallery.currentSlide * 100;
+            gallery.container.style.transform = `translateX(${translateX}%)`;
+            
+            // Update dots
+            gallery.dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === gallery.currentSlide);
+            });
+        }
+        
+        // Auto-play functionality (optional)
+        function startAutoPlay(galleryId, interval = 5000) {
+            setInterval(() => {
+                nextSlide(galleryId);
+            }, interval);
+        }
+        
+        // Touch/swipe support for mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryElements = document.querySelectorAll('.image-gallery');
+            
+            galleryElements.forEach(gallery => {
+                let startX = 0;
+                let endX = 0;
+                const galleryId = gallery.getAttribute('data-gallery');
+                
+                if (!galleryId || gallery.classList.contains('single-image')) return;
+                
+                gallery.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+                
+                gallery.addEventListener('touchend', (e) => {
+                    endX = e.changedTouches[0].clientX;
+                    handleSwipe(galleryId);
+                });
+                
+                function handleSwipe(galleryId) {
+                    const threshold = 50;
+                    const diff = startX - endX;
+                    
+                    if (Math.abs(diff) > threshold) {
+                        if (diff > 0) {
+                            nextSlide(galleryId);
+                        } else {
+                            previousSlide(galleryId);
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
