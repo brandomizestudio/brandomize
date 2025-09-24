@@ -251,36 +251,38 @@
         }
 
         addParallaxEffects() {
-            const parallaxElements = document.querySelectorAll('.floating-card, .hero');
+            const parallaxElements = document.querySelectorAll('.floating-card');
             
-            // Disable parallax on mobile devices to prevent scroll conflicts
+            // Disable parallax on mobile devices and hero to prevent scroll conflicts
             const isMobile = window.innerWidth <= 768;
             if (parallaxElements.length === 0 || utils.prefersReducedMotion() || isMobile) return;
 
-            let ticking = false;
-            const updateParallax = () => {
-                const scrolled = window.pageYOffset;
-                
-                parallaxElements.forEach((element, index) => {
-                    if (element.classList.contains('floating-card')) {
-                        const speed = 0.3 + (index * 0.1);
-                        element.style.transform = `translateY(${scrolled * speed}px)`;
-                    } else if (element.classList.contains('hero')) {
-                        element.style.transform = `translateY(${scrolled * -0.2}px)`;
+            // Wait for initial page load to settle before enabling parallax
+            setTimeout(() => {
+                let ticking = false;
+                const updateParallax = () => {
+                    const scrolled = window.pageYOffset;
+                    
+                    parallaxElements.forEach((element, index) => {
+                        if (element.classList.contains('floating-card')) {
+                            const speed = 0.2 + (index * 0.05); // Reduced speed to prevent conflicts
+                            element.style.transform = `translateY(${scrolled * speed}px)`;
+                        }
+                        // Removed hero parallax to prevent scroll position issues
+                    });
+                    
+                    ticking = false;
+                };
+
+                const parallaxListener = () => {
+                    if (!ticking) {
+                        requestAnimationFrame(updateParallax);
+                        ticking = true;
                     }
-                });
-                
-                ticking = false;
-            };
+                };
 
-            const parallaxListener = () => {
-                if (!ticking) {
-                    requestAnimationFrame(updateParallax);
-                    ticking = true;
-                }
-            };
-
-            window.addEventListener('scroll', parallaxListener);
+                window.addEventListener('scroll', parallaxListener);
+            }, 1000); // Delay parallax initialization
         }
     }
 
@@ -502,25 +504,21 @@
         }
 
         setupPageLoad() {
-            const isMobile = window.innerWidth <= 768;
+            // Disable page load body animations to prevent scroll conflicts
+            // Keep the body at normal state to avoid unwanted scroll behavior
+            document.body.style.opacity = '1';
+            document.body.style.transform = 'none';
             
-            // Skip page load animation on mobile to prevent scroll conflicts
-            if (isMobile) {
-                document.body.style.opacity = '1';
-                document.body.style.transform = 'none';
-                return;
-            }
-            
-            // Initial page load animation for desktop only
-            document.body.style.opacity = '0';
-            document.body.style.transform = 'translateY(20px)';
-            
+            // Add a subtle fade-in to hero content instead of body transform
             window.addEventListener('load', () => {
-                if (!utils.prefersReducedMotion()) {
-                    document.body.style.transition = 'opacity 600ms ease, transform 600ms ease';
+                const heroContent = document.querySelector('.hero-content');
+                if (heroContent && !utils.prefersReducedMotion()) {
+                    heroContent.style.opacity = '0';
+                    heroContent.style.transition = 'opacity 800ms ease';
+                    setTimeout(() => {
+                        heroContent.style.opacity = '1';
+                    }, 100);
                 }
-                document.body.style.opacity = '1';
-                document.body.style.transform = 'translateY(0)';
             });
         }
 
@@ -627,8 +625,17 @@
         try {
             const isMobile = window.innerWidth <= 768;
             
-            // On mobile, delay animation initialization to prevent scroll conflicts
-            if (isMobile) {
+            // Delay animation initialization on all devices to prevent scroll conflicts
+            const initDelay = isMobile ? 1500 : 800; // Longer delay on mobile
+            
+            // Ensure page scroll position is stable before initializing animations
+            setTimeout(() => {
+                // Reset scroll position to top to prevent unwanted offset
+                if (window.pageYOffset > 0) {
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                }
+                
+                // Initialize animations after scroll reset
                 setTimeout(() => {
                     new ScrollAnimationManager();
                     new ButtonAnimations();
@@ -637,18 +644,10 @@
                     new PageTransitions();
                     new ScrollEffects();
                     
-                    console.log('🎬 Mobile-optimized animations initialized');
-                }, 1000); // 1 second delay to let initial scroll settle
-            } else {
-                new ScrollAnimationManager();
-                new ButtonAnimations();
-                new CardAnimations();
-                new TextAnimations();
-                new PageTransitions();
-                new ScrollEffects();
+                    console.log('🎬 Scroll-optimized animations initialized');
+                }, 200);
                 
-                console.log('🎬 Silky smooth animations initialized');
-            }
+            }, initDelay);
         } catch (error) {
             console.error('Animation initialization error:', error);
         }

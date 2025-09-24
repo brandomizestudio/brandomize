@@ -135,6 +135,12 @@
                 transition: none !important;
             }
             
+            /* Ensure hero content stays in position during page load */
+            .hero-content, .hero-buttons {
+                transform: none !important;
+                position: relative;
+            }
+            
             /* Ensure smooth touch scrolling */
             * {
                 -webkit-transform: translateZ(0);
@@ -162,6 +168,10 @@
             overflow-x: hidden;
             max-width: 100%;
             width: 100%;
+            /* Prevent unwanted page load animations from affecting scroll position */
+            opacity: 1 !important;
+            transform: none !important;
+            transition: none !important;
         }
 
         * {
