@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best Marketing Agency in Hisar | Brandomize - Creative Digital Marketing & Reel Creators</title>
-    <meta name="description" content="Top marketing agency in Hisar specializing in creative reels, YouTube videos, social media marketing & brand growth. Best creative agency in Hisar with proven results. Contact: +91 9034192379">
+    <title>Brandomize | Transform Your Brand with Viral Content & Marketing That Works</title>
+    <meta name="description" content="Turn your business into a brand that gets noticed. We've helped 300+ Indian businesses generate ₹5.2M+ revenue through viral reels, strategic marketing, and proven growth systems. Start your transformation today.">
     <meta name="keywords" content="best marketing agency hisar, top marketing agency hisar, creative agency hisar, reel creators hisar, youtube video creators hisar, social media marketing hisar, digital marketing hisar, brand growth hisar, creative content creators hisar, top 5 marketing agencies hisar">
     <meta name="author" content="Brandomize Creative Agency">
     <meta name="robots" content="index, follow">
@@ -24,16 +24,21 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://brandomize.studio/">
-    <meta property="og:title" content="Best Marketing Agency in Hisar | Brandomize - Creative Digital Marketing">
-    <meta property="og:description" content="Top creative marketing agency in Hisar. We create viral reels, YouTube videos & grow your brand. Best digital marketing services in Hisar, Haryana.">
+    <meta property="og:title" content="Brandomize | Transform Your Brand with Viral Content & Marketing That Works">
+    <meta property="og:description" content="Turn your business into a brand that gets noticed. We've helped 300+ Indian businesses generate ₹5.2M+ revenue through viral reels, strategic marketing, and proven growth systems.">
     <meta property="og:site_name" content="Brandomize">
     <meta property="og:locale" content="en_IN">
+    <meta property="og:image" content="https://brandomize.studio/public/brand-logos/brandomize-og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Brandomize - Transform Your Brand with Viral Content & Marketing">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://brandomize.studio/">
-    <meta property="twitter:title" content="Best Marketing Agency in Hisar | Brandomize">
-    <meta property="twitter:description" content="Top creative marketing agency in Hisar specializing in viral reels & brand growth.">
+    <meta property="twitter:title" content="Brandomize | Transform Your Brand with Viral Content & Marketing That Works">
+    <meta property="twitter:description" content="Turn your business into a brand that gets noticed. We've helped 300+ Indian businesses generate ₹5.2M+ revenue through viral reels, strategic marketing, and proven growth systems.">
+    <meta property="twitter:image" content="https://brandomize.studio/public/brand-logos/brandomize-og-image.jpg">
     
     <!-- Local Business Schema -->
     <script type="application/ld+json">
@@ -41,8 +46,8 @@
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Brandomize",
-      "image": "",
-      "description": "Best marketing agency in Hisar specializing in creative reels, YouTube videos, and digital marketing services",
+      "image": "https://brandomize.studio/public/brand-logos/brandomize-og-image.jpg",
+      "description": "Transform your business into a brand that gets noticed through viral content and strategic marketing that works",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Sector 15",
@@ -928,6 +933,305 @@
             color: #64748b;
             text-decoration: underline;
             cursor: pointer;
+        }
+
+        /* Case Study Inline Component */
+        .case-study-inline {
+            margin-top: 1rem;
+            background: #f8fafc;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .case-study-inline[aria-expanded="true"] {
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.1);
+        }
+
+        .case-study-button {
+            background: none;
+            border: none;
+            padding: 0;
+            font: inherit;
+            color: #64748b;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: color 0.2s ease;
+        }
+
+        .case-study-button:hover {
+            color: #6366f1;
+        }
+
+        .case-study-button:focus {
+            outline: 2px solid #6366f1;
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        .case-study-content {
+            padding: 1.5rem;
+            display: none;
+        }
+
+        .case-study-content.expanded {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .case-study-headline {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .case-study-bullets li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #4b5563;
+            line-height: 1.5;
+        }
+
+        .case-study-bullets li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .case-study-cta {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .case-study-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+
+        .case-study-cta:focus {
+            outline: 2px solid #6366f1;
+            outline-offset: 2px;
+        }
+
+        /* Badge Component */
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.375rem;
+            margin-left: 0.25rem;
+            vertical-align: top;
+            line-height: 1.2;
+        }
+
+        .badge-soon {
+            background-color: #f3f4f6;
+            color: #6b7280;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* Disabled Navigation Items */
+        .nav-link[aria-disabled="true"] {
+            opacity: 0.6;
+            cursor: not-allowed;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .nav-link[aria-disabled="true"]:focus {
+            outline: none;
+        }
+
+        .nav-link-disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            user-select: none;
+            text-decoration: none;
+            color: #6b7280;
+        }
+
+        .nav-link-disabled:hover {
+            color: #6b7280;
+        }
+
+        /* Location Band */
+        .location-band {
+            background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%);
+            padding: 0.75rem 0;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .location-text {
+            font-size: 0.875rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .location-highlight {
+            color: #6366f1;
+            font-weight: 600;
+        }
+
+        /* Walkthrough Link */
+        .walkthrough-link {
+            display: inline-block;
+            font-size: 0.75rem;
+            color: #6366f1;
+            text-decoration: none;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+        }
+
+        .walkthrough-link:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        /* Contact Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background-color: #f3f4f6;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            padding-right: 2rem;
+        }
+
+        .modal-text {
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .modal-btn {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.875rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .modal-btn-primary {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+        }
+
+        .modal-btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+
+        .modal-btn-secondary {
+            background: #f8fafc;
+            color: #6366f1;
+            border: 1px solid #e2e8f0;
+        }
+
+        .modal-btn-secondary:hover {
+            background: #f1f5f9;
+            color: #6366f1;
+            text-decoration: none;
         }
 
         /* Brands Section */
@@ -2207,7 +2511,7 @@
             <ul class="nav-menu">
                 <li><a href="what-we-craft.html" class="nav-link">What We Craft</a></li>
                 <li><a href="our-process.html" class="nav-link">Our Process</a></li>
-                <li><a href="#" class="nav-link">Blog</a></li>
+                <li><span class="nav-link-disabled">Blog<sup class="badge badge-soon">Soon</sup></span></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
             </ul>
             <div class="nav-buttons">
@@ -2252,6 +2556,7 @@
                         <div class="hero-stat">
                             <div class="stat-highlight">Proven Results</div>
                             <div class="stat-detail">300+ Happy Clients</div>
+                            <a href="#" class="walkthrough-link" onclick="openWalkthroughModal(); return false;">Ask us for a private walkthrough</a>
                         </div>
                         <div class="hero-stat">
                             <div class="stat-highlight">Fast Delivery</div>
@@ -2277,11 +2582,12 @@
                         </div>
                     </div>
                     <div class="floating-card card-2">
-                        <div class="card-content">
-                            <h4>ROI Delivered</h4>
-                            <div class="metric">$2.4M</div>
-                            <p>Revenue generated</p>
-                        </div>
+                          <div class="card-content">
+                              <h4>ROI Delivered</h4>
+                              <div class="metric">$2.4M</div>
+                              <p>Revenue generated</p>
+                              <a href="#" class="walkthrough-link" onclick="openWalkthroughModal(); return false;">Ask us for a private walkthrough</a>
+                          </div>
                     </div>
                     <div class="floating-card card-3">
                         <div class="card-content">
@@ -2384,22 +2690,70 @@
                 <div class="stat-item">
                     <span class="stat-number">347%</span>
                     <span class="stat-label">Average ROI increase</span>
-                    <span class="stat-context">See case study</span>
+                    <button type="button" class="case-study-button" aria-expanded="false" aria-controls="case-study-roi">See case study</button>
+                    <a href="#" class="walkthrough-link" onclick="openWalkthroughModal(); return false;">Ask us for a private walkthrough</a>
+                    <div class="case-study-inline" id="case-study-roi" role="region" aria-labelledby="case-study-roi-headline">
+                        <div class="case-study-content">
+                            <h3 class="case-study-headline" id="case-study-roi-headline">Local Electronics Store ROI Transformation</h3>
+                            <ul class="case-study-bullets">
+                                <li><strong>Problem:</strong> Store struggled with low foot traffic and 5% monthly sales growth</li>
+                                <li><strong>Approach:</strong> Created targeted social media campaigns showcasing product demos and customer testimonials</li>
+                                <li><strong>Outcome:</strong> Achieved 347% ROI increase within 6 months through strategic digital marketing</li>
+                            </ul>
+                            <a href="#contact" class="case-study-cta">Get Similar Results</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">2.8M</span>
                     <span class="stat-label">Social impressions monthly</span>
-                    <span class="stat-context">See case study</span>
+                    <button type="button" class="case-study-button" aria-expanded="false" aria-controls="case-study-impressions">See case study</button>
+                    <a href="#" class="walkthrough-link" onclick="openWalkthroughModal(); return false;">Ask us for a private walkthrough</a>
+                    <div class="case-study-inline" id="case-study-impressions" role="region" aria-labelledby="case-study-impressions-headline">
+                        <div class="case-study-content">
+                            <h3 class="case-study-headline" id="case-study-impressions-headline">Fashion Brand Social Media Success</h3>
+                            <ul class="case-study-bullets">
+                                <li><strong>Problem:</strong> Fashion startup had minimal social presence with 10K followers and low engagement</li>
+                                <li><strong>Approach:</strong> Developed viral-ready content strategy with influencer partnerships and trend-based posts</li>
+                                <li><strong>Outcome:</strong> Reached 2.8M monthly impressions and grew follower base by 400% in 8 months</li>
+                            </ul>
+                            <a href="#contact" class="case-study-cta">Scale Your Reach</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">$5.2M</span>
                     <span class="stat-label">Revenue generated in 2024</span>
-                    <span class="stat-context">See case study</span>
+                    <button type="button" class="case-study-button" aria-expanded="false" aria-controls="case-study-revenue">See case study</button>
+                    <a href="#" class="walkthrough-link" onclick="openWalkthroughModal(); return false;">Ask us for a private walkthrough</a>
+                    <div class="case-study-inline" id="case-study-revenue" role="region" aria-labelledby="case-study-revenue-headline">
+                        <div class="case-study-content">
+                            <h3 class="case-study-headline" id="case-study-revenue-headline">Multi-Brand Portfolio Revenue Growth</h3>
+                            <ul class="case-study-bullets">
+                                <li><strong>Problem:</strong> Multiple clients struggling with inconsistent revenue streams and brand positioning</li>
+                                <li><strong>Approach:</strong> Comprehensive branding and marketing strategy across video, social, and digital channels</li>
+                                <li><strong>Outcome:</strong> Generated $5.2M in combined client revenue through integrated marketing campaigns</li>
+                            </ul>
+                            <a href="#contact" class="case-study-cta">Grow Your Revenue</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">94%</span>
                     <span class="stat-label">Client satisfaction score</span>
-                    <span class="stat-context">See case study</span>
+                    <button type="button" class="case-study-button" aria-expanded="false" aria-controls="case-study-satisfaction">See case study</button>
+                    <a href="#" class="walkthrough-link" onclick="openWalkthroughModal(); return false;">Ask us for a private walkthrough</a>
+                    <div class="case-study-inline" id="case-study-satisfaction" role="region" aria-labelledby="case-study-satisfaction-headline">
+                        <div class="case-study-content">
+                            <h3 class="case-study-headline" id="case-study-satisfaction-headline">Client Success & Long-term Partnerships</h3>
+                            <ul class="case-study-bullets">
+                                <li><strong>Problem:</strong> Previous marketing partners delivered inconsistent results and poor communication</li>
+                                <li><strong>Approach:</strong> Transparent project management, regular check-ins, and data-driven campaign optimization</li>
+                                <li><strong>Outcome:</strong> Achieved 94% client satisfaction with 85% of clients renewing for long-term partnerships</li>
+                            </ul>
+                            <a href="#contact" class="case-study-cta">Start Partnership</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -3248,6 +3602,15 @@
         </div>
     </section>
 
+    <!-- Location Band -->
+    <section class="location-band">
+        <div class="container">
+            <p class="location-text">
+                <span class="location-highlight">🌟 Serving</span> Hisar, Haryana, Delhi NCR, Punjab
+            </p>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
@@ -3287,7 +3650,7 @@
                         <li><a href="what-we-craft.html">What We Craft</a></li>
                         <li><a href="our-process.html">Our Process</a></li>
                         <li><a href="#">About</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><span class="nav-link-disabled">Blog<sup class="badge badge-soon">Soon</sup></span></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -3531,6 +3894,124 @@
             });
         });
     </script>
+    
+    <script>
+        // Case Study Inline Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const caseStudyButtons = document.querySelectorAll('.case-study-button');
+            
+            caseStudyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('aria-controls');
+                    const targetContent = document.getElementById(targetId);
+                    const contentDiv = targetContent.querySelector('.case-study-content');
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    
+                    // Close all other open case studies first
+                    caseStudyButtons.forEach(otherButton => {
+                        if (otherButton !== this) {
+                            const otherTargetId = otherButton.getAttribute('aria-controls');
+                            const otherTargetContent = document.getElementById(otherTargetId);
+                            const otherContentDiv = otherTargetContent.querySelector('.case-study-content');
+                            
+                            otherButton.setAttribute('aria-expanded', 'false');
+                            otherTargetContent.setAttribute('aria-expanded', 'false');
+                            otherContentDiv.classList.remove('expanded');
+                        }
+                    });
+                    
+                    // Toggle current case study
+                    if (isExpanded) {
+                        this.setAttribute('aria-expanded', 'false');
+                        targetContent.setAttribute('aria-expanded', 'false');
+                        contentDiv.classList.remove('expanded');
+                    } else {
+                        this.setAttribute('aria-expanded', 'true');
+                        targetContent.setAttribute('aria-expanded', 'true');
+                        contentDiv.classList.add('expanded');
+                        
+                        // Smooth scroll to show the expanded content
+                        setTimeout(() => {
+                            targetContent.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'nearest'
+                            });
+                        }, 100);
+                    }
+                });
+                
+                // Handle keyboard navigation
+                button.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+            
+            // Handle CTA button clicks - scroll to contact section
+            const ctaButtons = document.querySelectorAll('.case-study-cta');
+            ctaButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const contactSection = document.querySelector('#contact');
+                    if (contactSection) {
+                        contactSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    
+    <!-- Contact Modal -->
+    <div id="walkthroughModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeWalkthroughModal()">&times;</button>
+            <h3 class="modal-title">Get a Private Walkthrough</h3>
+            <p class="modal-text">
+                See exactly how we've helped similar businesses like yours achieve these results. 
+                We'll show you our proven process, real campaign examples, and discuss how we can customize our approach for your specific goals.
+            </p>
+            <div class="modal-buttons">
+                <a href="https://wa.me/919034192379?text=Hi%20Brandomize!%20I%27d%20like%20to%20schedule%20a%20private%20walkthrough%20to%20see%20how%20you%20achieved%20these%20results%20for%20your%20clients.%20Can%20we%20set%20up%20a%20call?" target="_blank" class="modal-btn modal-btn-primary">
+                    Schedule WhatsApp Call
+                </a>
+                <a href="mailto:brandomize.studio@gmail.com?subject=Private%20Walkthrough%20Request&body=Hi%20Brandomize%20team,%0A%0AI%27d%20like%20to%20schedule%20a%20private%20walkthrough%20to%20see%20how%20you%20achieved%20these%20results%20for%20your%20clients.%0A%0APlease%20let%20me%20know%20your%20availability.%0A%0AThanks!" class="modal-btn modal-btn-secondary">
+                    Send Email Request
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openWalkthroughModal() {
+            document.getElementById('walkthroughModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeWalkthroughModal() {
+            document.getElementById('walkthroughModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('walkthroughModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeWalkthroughModal();
+            }
+        });
+
+        // Close modal with escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeWalkthroughModal();
+            }
+        });
+    </script>
+    
     <script src="scroll-animations.js"></script>
 </body>
 </html>
