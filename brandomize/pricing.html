@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing & Packages | Brandomize - Transparent Marketing Services Pricing</title>
+    <meta name="description" content="Transparent pricing for all Brandomize services. Logo design from ₹3,000, brand identity from ₹25,000, social media management from ₹10,000/month. No hidden costs, flexible packages available.">
+    <meta name="keywords" content="brandomize pricing, marketing agency pricing hisar, logo design cost, brand identity pricing, social media management cost, website development pricing, video editing rates">
+    <meta name="author" content="Brandomize Creative Agency">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="manifest" href="site.webmanifest">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://brandomize.studio/pricing.html">
+    <meta property="og:title" content="Pricing & Packages | Brandomize">
+    <meta property="og:description" content="Transparent pricing for all Brandomize services. Logo design from ₹3,000, brand identity from ₹25,000, social media management from ₹10,000/month.">
+    <meta property="og:site_name" content="Brandomize">
+    <meta property="og:locale" content="en_IN">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://brandomize.studio/pricing.html">
+    <meta property="twitter:title" content="Pricing & Packages | Brandomize">
+    <meta property="twitter:description" content="Transparent pricing for all Brandomize services. No hidden costs, flexible packages available.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Rubik', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .nav-logo h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1a1a1a;
+        }
+
+        .nav-logo a {
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: none;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .nav-menu {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #6366f1;
+        }
+
+        .nav-buttons {
+            display: none;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .nav-buttons {
+                display: flex;
+            }
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128c7e;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Badge Component */
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.375rem;
+            margin-left: 0.25rem;
+            vertical-align: top;
+            line-height: 1.2;
+        }
+
+        .badge-soon {
+            background-color: #f3f4f6;
+            color: #6b7280;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* Disabled Navigation Items */
+        .nav-link-disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            user-select: none;
+            text-decoration: none;
+            color: #6b7280;
+        }
+
+        .nav-link-disabled:hover {
+            color: #6b7280;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 640px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-category {
+            margin-bottom: 4rem;
+        }
+
+        .category-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .category-description {
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            border-color: #6366f1;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.15);
+        }
+
+        .pricing-card.featured {
+            border-color: #6366f1;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+        }
+
+        .pricing-card.featured::before {
+            content: "Most Popular";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .tier-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #6366f1;
+            margin-bottom: 1rem;
+        }
+
+        .tier-description {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .tier-notes {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        /* Bundle Section */
+        .bundle-section {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            padding: 4rem 0;
+            color: white;
+            text-align: center;
+        }
+
+        .bundle-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bundle-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .bundle-includes {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .bundle-includes li {
+            padding: 0.5rem 0;
+            font-size: 1.125rem;
+        }
+
+        .bundle-includes li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .bundle-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 1rem 0;
+        }
+
+        .bundle-savings {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 0;
+            background: #f8fafc;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.125rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: block;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #1a1a1a;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 767px) {
+            .nav-menu {
+                position: fixed;
+                top: 5rem;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-buttons {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html"><span class="highlight">Brandomize</span></a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="what-we-craft.html" class="nav-link">What We Craft</a></li>
+                <li><a href="our-process.html" class="nav-link">Our Process</a></li>
+                <li><a href="pricing.html" class="nav-link active">Pricing</a></li>
+                <li><span class="nav-link-disabled">Blog<sup class="badge badge-soon">Soon</sup></span></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="https://wa.me/919034192379?text=Hi%20Brandomize!%20I%27m%20interested%20in%20your%20marketing%20services.%20Can%20we%20discuss%20my%20project?" target="_blank" class="btn btn-whatsapp">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.347" fill="currentColor"/>
+                    </svg>
+                    WhatsApp
+                </a>
+                <a href="https://wa.me/919034192379?text=Hi%20Brandomize!%20I%27d%20like%20to%20get%20started%20with%20your%20services.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Get Started</a>
+            </div>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Transparent <span class="highlight">Pricing</span> for Every Business</h1>
+            <p>No hidden costs, no surprises. Choose the perfect package for your brand's growth journey.</p>
+        </div>
+    </section>
+
+    <!-- Logo Design Pricing -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="pricing-category">
+                <h2 class="category-title">Logo Design</h2>
+                <p class="category-description">Professional logo design that represents your brand perfectly</p>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3 class="tier-name">Simple</h3>
+                        <div class="tier-price">₹3,000–5,000</div>
+                        <p class="tier-description">Text-based logo, 1–2 concepts</p>
+                        <p class="tier-notes">Basic typography logo</p>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3 class="tier-name">Standard</h3>
+                        <div class="tier-price">₹8,000–10,000</div>
+                        <p class="tier-description">3–4 revisions with logo mark, color variants, source files</p>
+                        <p class="tier-notes">Includes color variants and source files</p>
+                    </div>
+                    <div class="pricing-card">
+                        <h3 class="tier-name">Premium</h3>
+                        <div class="tier-price">₹12,000–15,000</div>
+                        <p class="tier-description">Concepts + icon set for startups</p>
+                        <p class="tier-notes">Includes startup branding assets</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brand Identity Pricing -->
+            <div class="pricing-category">
+                <h2 class="category-title">Brand Identity</h2>
+                <p class="category-description">Complete brand identity packages to establish your brand presence</p>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3 class="tier-name">Basic</h3>
+                        <div class="tier-price">₹25,000–30,000</div>
+                        <p class="tier-description">Logo, color palette, typography</p>
+                        <p class="tier-notes">Starter brand kit</p>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3 class="tier-name">Complete</h3>
+                        <div class="tier-price">₹45,000–60,000</div>
+                        <p class="tier-description">Manual + stationery + brand book</p>
+                        <p class="tier-notes">Includes brand book and social kit</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reel & Video Editing Pricing -->
+            <div class="pricing-category">
+                <h2 class="category-title">Reel & Video Editing</h2>
+                <p class="category-description">Professional video editing that makes your content stand out</p>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3 class="tier-name">Basic</h3>
+                        <div class="tier-price">₹700–1,000</div>
+                        <p class="tier-description">Smooth transitions, clean cuts</p>
+                        <p class="tier-notes">Clean sync transitions</p>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3 class="tier-name">Advanced</h3>
+                        <div class="tier-price">₹1,500–2,000</div>
+                        <p class="tier-description">Masking, overlays, text reveals, zoom-ins</p>
+                        <p class="tier-notes">Includes dynamic motion effects</p>
+                    </div>
+                    <div class="pricing-card">
+                        <h3 class="tier-name">Premium</h3>
+                        <div class="tier-price">₹2,500–3,500</div>
+                        <p class="tier-description">Cinematic VFX, 3D, building grow effects</p>
+                        <p class="tier-notes">Professional-grade cinematic effects</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Creation Pricing -->
+            <div class="pricing-category">
+                <h2 class="category-title">Content Creation</h2>
+                <p class="category-description">Eye-catching content that engages your audience</p>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3 class="tier-name">Graphic Post / Banner</h3>
+                        <div class="tier-price">₹400–600</div>
+                        <p class="tier-description">Custom single post design</p>
+                    </div>
+                    <div class="pricing-card">
+                        <h3 class="tier-name">Carousel</h3>
+                        <div class="tier-price">₹800–1,200</div>
+                        <p class="tier-description">Multi-slide post design (up to 5 slides)</p>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3 class="tier-name">Product Shoot</h3>
+                        <div class="tier-price">₹2,000–5,000</div>
+                        <p class="tier-description">Photo/video shoot with lighting and editing</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media Management Pricing -->
+            <div class="pricing-category">
+                <h2 class="category-title">Social Media Management</h2>
+                <p class="category-description">Complete social media management to grow your online presence</p>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3 class="tier-name">Starter</h3>
+                        <div class="tier-price">₹10,000/month</div>
+                        <p class="tier-description">8 posts + 2 reels per month (1 platform)</p>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3 class="tier-name">Standard</h3>
+                        <div class="tier-price">₹15,000/month</div>
+                        <p class="tier-description">12 posts + 4 reels per month (2 platforms + analytics)</p>
+                    </div>
+                    <div class="pricing-card">
+                        <h3 class="tier-name">Premium</h3>
+                        <div class="tier-price">₹20,000–25,000/month</div>
+                        <p class="tier-description">20 posts + 6 reels per month with engagement & captions</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Website Development Pricing -->
+            <div class="pricing-category">
+                <h2 class="category-title">Website Development</h2>
+                <p class="category-description">Professional websites that convert visitors into customers</p>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3 class="tier-name">Portfolio / Single-page</h3>
+                        <div class="tier-price">₹15,000–20,000</div>
+                        <p class="tier-description">Ideal for freelancers</p>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3 class="tier-name">Business (5–10 pages)</h3>
+                        <div class="tier-price">₹25,000–40,000</div>
+                        <p class="tier-description">Website with animations and SEO setup</p>
+                    </div>
+                    <div class="pricing-card">
+                        <h3 class="tier-name">E-commerce / Booking</h3>
+                        <div class="tier-price">₹50,000–80,000</div>
+                        <p class="tier-description">Website with product pages and payment integration</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workflow Consulting Pricing -->
+            <div class="pricing-category">
+                <h2 class="category-title">Workflow Consulting</h2>
+                <p class="category-description">Strategic consulting to optimize your business processes</p>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3 class="tier-name">Strategy Session</h3>
+                        <div class="tier-price">₹1,500/hour</div>
+                        <p class="tier-description">Covers brand and workflow tools</p>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3 class="tier-name">Full-day Consultation</h3>
+                        <div class="tier-price">₹10,000</div>
+                        <p class="tier-description">Includes audit and workflow revamp</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bundle Section -->
+    <section class="bundle-section">
+        <div class="container">
+            <div class="bundle-card">
+                <h2 class="bundle-title">Launch Pack Bundle</h2>
+                <p>Everything you need to launch your brand professionally</p>
+                <ul class="bundle-includes">
+                    <li>Professional Logo Design</li>
+                    <li>Complete Brand Identity</li>
+                    <li>Business Website</li>
+                </ul>
+                <div class="bundle-price">₹75,000–85,000</div>
+                <div class="bundle-savings">Save up to ₹20,000</div>
+                <a href="https://wa.me/919034192379?text=Hi%20Brandomize!%20I%27m%20interested%20in%20the%20Launch%20Pack%20Bundle.%20Can%20we%20discuss%20the%20details?" target="_blank" class="btn btn-primary">Get Launch Pack</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Ready to Get Started?</h2>
+            <p class="cta-description">
+                All packages include revisions, source files, and our commitment to your success. 
+                Get 10-15% discount on long-term retainers (3+ months).
+            </p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/919034192379?text=Hi%20Brandomize!%20I%27d%20like%20to%20discuss%20pricing%20and%20get%20a%20custom%20quote%20for%20my%20project." target="_blank" class="btn btn-primary">Get Custom Quote</a>
+                <a href="mailto:brandomize.studio@gmail.com?subject=Pricing%20Inquiry&body=Hi%20Brandomize%20team,%0A%0AI%27m%20interested%20in%20your%20services%20and%20would%20like%20to%20discuss%20pricing%20options.%0A%0APlease%20get%20back%20to%20me%20with%20more%20details.%0A%0AThanks!" class="btn btn-whatsapp">Email Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Brandomize. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="what-we-craft.html">What We Craft</a>
+                <a href="our-process.html">Our Process</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close menu when clicking on nav links
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
+</body>
+</html>
