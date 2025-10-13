@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Sitemap: https://brandomize.netlify.app/sitemap.xml
+
+# Disallow admin or private directories if any
+User-agent: *
+Disallow: /private/
+Disallow: /admin/
+
