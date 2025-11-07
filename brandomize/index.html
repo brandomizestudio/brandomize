@@ -906,6 +906,68 @@
         .content-text li {
             margin-bottom: 0.75rem;
         }
+
+        /* === FAQ SECTION === */
+        .faq-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: var(--text-dark);
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
     </style>
 </head>
 <body>
@@ -1206,6 +1268,172 @@
         </div>
     </section>
 
+    <!-- FAQ Section with Schema Markup -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">FAQ</span>
+                <h2 class="section-title">Frequently Asked Questions About Marketing Services in Hisar</h2>
+                <p class="section-description">Get answers to common questions about our creative and marketing services.</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <span>What services does Brandomize offer in Hisar?</span>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Brandomize is Hisar's leading creative agency specializing in <a href="what-we-craft.html">viral reel creation</a>, <a href="pricing.html">web development</a>, iOS app design, brand identity, social media management, and product photography. We help businesses across Hisar and Haryana build powerful brands.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <span>Why is Brandomize the best marketing agency in Hisar?</span>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We combine local expertise with cutting-edge creativity. Having served 300+ businesses, we understand the Hisar market deeply and deliver results-driven marketing strategies. Our reels have generated over 5 million views, helping businesses grow their brand visibility significantly.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <span>How much does web development cost in Hisar?</span>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our <a href="pricing.html">web development pricing</a> starts from ₹15,000 for portfolio websites, ₹25,000-40,000 for business websites, and ₹50,000-80,000 for e-commerce sites. All prices include responsive design, SEO optimization, and modern animations. Check our <a href="pricing.html">pricing page</a> for detailed packages.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <span>Do you provide iOS app development services in Hisar?</span>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We are one of the best iOS app developers in Hisar, creating custom mobile applications for businesses. Our apps are designed with user experience in mind and built using the latest Swift and SwiftUI technologies. <a href="https://wa.me/917404355477">Contact us</a> for a free consultation on your app idea.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <span>What makes your reel creation service stand out?</span>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>As the best reel creators in Hisar, we've generated over 5 million views for our clients. We understand viral content trends, use professional equipment, and create engaging storytelling that captures attention in the first 3 seconds. See our <a href="what-we-craft.html">portfolio of viral reels</a>.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <span>How long does it take to complete a website project?</span>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Timeline varies by project scope: Portfolio websites take 1-2 weeks, business websites 2-4 weeks, and e-commerce sites 4-6 weeks. We follow our proven <a href="our-process.html">4-step process</a> to ensure quality delivery on time.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <span>Do you offer social media management for Hisar businesses?</span>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We provide complete social media management starting at ₹10,000/month, including content creation, posting schedule, engagement management, and analytics. Our packages include 8-20 posts and 2-6 reels per month depending on your needs.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <span>Can I see examples of your previous work?</span>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Visit our <a href="what-we-craft.html">portfolio page</a> to see our work including viral reels with millions of views, professional websites we've built, and brand identities we've created for businesses in Hisar and across India.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What services does Brandomize offer in Hisar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Brandomize is Hisar's leading creative agency specializing in viral reel creation, web development, iOS app design, brand identity, social media management, and product photography. We help businesses across Hisar and Haryana build powerful brands."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is Brandomize the best marketing agency in Hisar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We combine local expertise with cutting-edge creativity. Having served 300+ businesses, we understand the Hisar market deeply and deliver results-driven marketing strategies. Our reels have generated over 5 million views, helping businesses grow their brand visibility significantly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does web development cost in Hisar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our web development pricing starts from ₹15,000 for portfolio websites, ₹25,000-40,000 for business websites, and ₹50,000-80,000 for e-commerce sites. All prices include responsive design, SEO optimization, and modern animations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you provide iOS app development services in Hisar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! We are one of the best iOS app developers in Hisar, creating custom mobile applications for businesses. Our apps are designed with user experience in mind and built using the latest Swift and SwiftUI technologies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes your reel creation service stand out?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As the best reel creators in Hisar, we've generated over 5 million views for our clients. We understand viral content trends, use professional equipment, and create engaging storytelling that captures attention in the first 3 seconds."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to complete a website project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Timeline varies by project scope: Portfolio websites take 1-2 weeks, business websites 2-4 weeks, and e-commerce sites 4-6 weeks. We follow our proven 4-step process to ensure quality delivery on time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer social media management for Hisar businesses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely! We provide complete social media management starting at ₹10,000/month, including content creation, posting schedule, engagement management, and analytics. Our packages include 8-20 posts and 2-6 reels per month depending on your needs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I see examples of your previous work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Visit our portfolio page to see our work including viral reels with millions of views, professional websites we've built, and brand identities we've created for businesses in Hisar and across India."
+          }
+        }
+      ]
+    }
+    </script>
+
     <!-- CTA Section -->
     <section style="padding: 4rem 0;">
         <div class="container">
@@ -1282,6 +1510,24 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const wasActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't already open
+                if (!wasActive) {
+                    faqItem.classList.add('active');
+                }
+            });
         });
     </script>
     <script src="scroll-animations.js"></script>

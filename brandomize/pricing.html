@@ -3,15 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< Current (Your changes)
-    <title>Pricing - Brandomize | Transparent Marketing Services Pricing</title>
-    <meta name="description" content="Transparent pricing for all Brandomize services. Logo design from ₹3,000, brand identity from ₹25,000, social media management from ₹10,000/month. No hidden costs.">
-    <meta name="robots" content="index, follow">
-    
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="canonical" href="https://brandomize.netlify.app/pricing.html">
-    
-=======
     
     <!-- SEO OPTIMIZED TITLE (55-65 chars) -->
     <title>Pricing | Marketing Services Rates in Hisar</title>
@@ -52,7 +43,6 @@
     <meta name="twitter:description" content="Transparent pricing for Brandomize services in Hisar. Logo design from ₹3K, brand identity ₹25K, social media ₹10K/month.">
     <meta name="twitter:image" content="https://brandomize.netlify.app/public/brand-logos/brandomize-og-image.jpg">
     
->>>>>>> Incoming (Background Agent changes)
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -518,6 +508,85 @@
                 transform: rotate(-45deg) translate(7px, -7px);
             }
         }
+
+        /* === FAQ SECTION === */
+        .faq-section {
+            padding: 6rem 0;
+            background: var(--bg-gray);
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .faq-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .faq-header p {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: var(--text-dark);
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
     </style>
 </head>
 <body>
@@ -710,6 +779,135 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-header">
+                <h2>Pricing & Service Questions for Hisar Businesses</h2>
+                <p>Get answers to common questions about our services and pricing in Hisar.</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are these prices fixed or customizable?</span>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our prices are flexible based on your specific needs. The listed prices are starting points. For complex projects or custom requirements, we provide tailored quotes. <a href="https://wa.me/917404355477">Contact us</a> for a personalized estimate for your Hisar business.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer discounts for bundled services?</span>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer package deals when you combine multiple services. For example, website + social media management, or brand identity + reel creation packages get 10-15% discount. Our Complete Business Bundle offers the best value for Hisar startups looking for comprehensive marketing solutions.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What's included in your website development packages?</span>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All our <a href="index.html">website packages</a> include responsive design, mobile optimization, SEO basics, SSL certificate, hosting setup assistance, and 30 days of post-launch support. Business and e-commerce sites also get animations, contact forms, and Google Analytics integration.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What's your payment structure?</span>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For one-time projects (logos, websites, apps): 50% advance, 50% on delivery. For monthly services (social media management): Monthly billing with first month in advance. We accept bank transfers, UPI, and online payments. All prices are in INR and inclusive of taxes.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I choose the right package for my business?</span>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Start with your goals and budget. For new businesses in Hisar, we recommend starting with brand identity + basic website. For growing businesses, social media management + reels work great. Need help deciding? Book a free <a href="our-process.html">consultation</a> and we'll recommend the best package for your needs.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you provide ongoing support after project completion?</span>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! All projects come with 30 days of free support. After that, we offer maintenance packages starting at ₹2,000/month for websites, or hourly support at ₹500/hour. Monthly retainer clients get priority support and discounted rates on additional services.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are these prices fixed or customizable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our prices are flexible based on your specific needs. The listed prices are starting points. For complex projects or custom requirements, we provide tailored quotes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer discounts for bundled services?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! We offer package deals when you combine multiple services. For example, website + social media management, or brand identity + reel creation packages get 10-15% discount."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's included in your website development packages?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All our website packages include responsive design, mobile optimization, SEO basics, SSL certificate, hosting setup assistance, and 30 days of post-launch support. Business and e-commerce sites also get animations, contact forms, and Google Analytics integration."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's your payment structure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For one-time projects: 50% advance, 50% on delivery. For monthly services: Monthly billing with first month in advance. We accept bank transfers, UPI, and online payments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I choose the right package for my business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with your goals and budget. For new businesses in Hisar, we recommend starting with brand identity + basic website. For growing businesses, social media management + reels work great."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you provide ongoing support after project completion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! All projects come with 30 days of free support. After that, we offer maintenance packages starting at ₹2,000/month for websites, or hourly support at ₹500/hour."
+          }
+        }
+      ]
+    }
+    </script>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -771,6 +969,22 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const wasActive = faqItem.classList.contains('active');
+                
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                if (!wasActive) {
+                    faqItem.classList.add('active');
+                }
+            });
         });
     </script>
     <script src="scroll-animations.js"></script>
