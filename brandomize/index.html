@@ -417,7 +417,7 @@
             object-fit: cover;
         }
 
-        /* === YOUTUBE SHORTS GALLERY === */
+        /* === YOUTUBE SHORTS GALLERY - HIGH PERFORMANCE === */
         .shorts-gallery-section {
             padding: 6rem 0;
             background: var(--bg-white);
@@ -468,7 +468,7 @@
             line-height: 1.7;
         }
 
-        /* Shorts Container */
+        /* Shorts Container - Optimized Scrolling */
         .shorts-scroll-container {
             overflow-x: auto;
             overflow-y: hidden;
@@ -476,6 +476,7 @@
             scrollbar-width: thin;
             scrollbar-color: var(--primary) var(--bg-gray);
             padding: 2rem 0;
+            scroll-snap-type: x proximity;
         }
 
         .shorts-scroll-container::-webkit-scrollbar {
@@ -508,7 +509,9 @@
             overflow: hidden;
             background: #000;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+            scroll-snap-align: start;
+            will-change: transform;
         }
 
         @media (max-width: 768px) {
@@ -523,7 +526,16 @@
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
         }
 
-        /* YouTube IFrame Container */
+        /* Poster Thumbnail */
+        .short-poster {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Video Container */
         .short-video-container {
             width: 100%;
             height: 100%;
@@ -534,7 +546,26 @@
             width: 100%;
             height: 100%;
             border: none;
-            pointer-events: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Skeleton Loading */
+        .short-skeleton {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
 
         /* Video Title Overlay */
@@ -559,7 +590,7 @@
             transform: translateY(10px);
         }
 
-        /* Custom Controls */
+        /* Apple-like SVG Controls */
         .short-controls {
             position: absolute;
             bottom: 1.5rem;
@@ -572,32 +603,78 @@
             transition: opacity 0.3s ease;
         }
 
-        .short-card:hover .short-controls {
+        .short-card:hover .short-controls,
+        .short-card:focus-within .short-controls {
             opacity: 1;
         }
 
         .control-btn {
             width: 44px;
             height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.95);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: none;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 1.125rem;
             transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+            padding: 0;
+        }
+
+        @media (min-width: 1024px) {
+            .control-btn {
+                width: 52px;
+                height: 52px;
+            }
         }
 
         .control-btn:hover {
-            background: white;
-            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.95);
+            transform: scale(1.05);
         }
 
         .control-btn:active {
             transform: scale(0.95);
+        }
+
+        .control-btn:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        .control-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: #0f1724;
+            stroke-width: 1.8px;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @media (min-width: 1024px) {
+            .control-btn svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        /* Fallback Badge */
+        .fallback-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            z-index: 5;
         }
 
         /* Loading Spinner */
@@ -1823,34 +1900,42 @@
         });
     </script>
 
-    <!-- YouTube Shorts Gallery Script -->
+    <!-- YouTube Shorts Gallery Script - High Performance -->
     <script>
-        // ===================================
-        // YOUTUBE SHORTS GALLERY IMPLEMENTATION
-        // ===================================
+        // ==========================================
+        // HIGH-PERFORMANCE YOUTUBE SHORTS GALLERY
+        // Poster-first, iframe-on-demand, optimized
+        // ==========================================
 
-        // Video data: YouTube Shorts links and titles
+        // Video data with YouTube IDs and titles
         const shortsData = [
-            { url: 'https://youtube.com/shorts/cQ1OIWVRdTo', title: 'Marketing trick', id: 'cQ1OIWVRdTo' },
-            { url: 'https://youtube.com/shorts/jA9m-YKOgWg', title: 'Gym Before and After', id: 'jA9m-YKOgWg' },
-            { url: 'https://youtube.com/shorts/RnAiabu32ME', title: 'Diksha Mehta Gym', id: 'RnAiabu32ME' },
-            { url: 'https://youtube.com/shorts/tLFP1lH0_Gg', title: 'Pure Roots', id: 'tLFP1lH0_Gg' },
-            { url: 'https://youtube.com/shorts/Ss0rUFmuoH4', title: 'CP Plus', id: 'Ss0rUFmuoH4' },
-            { url: 'https://youtube.com/shorts/cvV75bMyaH4', title: 'Antique Store', id: 'cvV75bMyaH4' },
-            { url: 'https://youtube.com/shorts/_ytesexp_Ew', title: 'Trident Building', id: '_ytesexp_Ew' }
+            { id: 'cQ1OIWVRdTo', title: 'Marketing trick' },
+            { id: 'jA9m-YKOgWg', title: 'Gym Before and After' },
+            { id: 'RnAiabu32ME', title: 'Diksha Mehta Gym' },
+            { id: 'tLFP1lH0_Gg', title: 'Pure Roots' },
+            { id: 'Ss0rUFmuoH4', title: 'CP Plus' },
+            { id: 'cvV75bMyaH4', title: 'Antique Store' },
+            { id: '_ytesexp_Ew', title: 'Trident Building' }
         ];
 
-        // Store YouTube player instances
-        const players = {};
-        let currentlyPlayingId = null;
+        // SVG icon definitions
+        const ICONS = {
+            play: `<svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg>`,
+            pause: `<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`,
+            muted: `<svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="17" y1="11" x2="23" y2="17"/><line x1="23" y1="11" x2="17" y2="17"/></svg>`,
+            unmuted: `<svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 5.93a10 10 0 0 1 0 12.14"/></svg>`
+        };
 
-        // Load YouTube IFrame API
-        const tag = document.createElement('script');
-        tag.src = 'https://www.youtube.com/iframe_api';
-        const firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        // State management
+        const state = {
+            players: {},
+            currentPlaying: null,
+            ytApiReady: false,
+            ytApiLoading: false,
+            preconnectsAdded: false
+        };
 
-        // Generate HTML for all video cards
+        // Generate all video cards with posters (no iframes yet)
         function generateShortsCards() {
             const grid = document.getElementById('shortsGrid');
             if (!grid) return;
@@ -1861,170 +1946,340 @@
                 card.setAttribute('data-video-id', video.id);
                 card.setAttribute('data-index', index);
 
+                // Use YouTube's thumbnail service for poster
+                const posterUrl = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
+
                 card.innerHTML = `
                     <div class="short-video-container">
-                        <div class="short-loading"></div>
-                        <div id="player-${video.id}" class="youtube-player"></div>
+                        <div class="short-skeleton"></div>
+                        <img 
+                            class="short-poster" 
+                            src="${posterUrl}" 
+                            alt="${video.title}"
+                            loading="lazy"
+                            onload="this.previousElementSibling.style.display='none'"
+                        />
                     </div>
                     <div class="short-title" id="title-${video.id}">${video.title}</div>
                     <div class="short-controls">
-                        <button class="control-btn play-pause-btn" data-video-id="${video.id}" aria-label="Play/Pause">
-                            ▶️
+                        <button 
+                            class="control-btn play-pause-btn" 
+                            data-video-id="${video.id}" 
+                            aria-label="Play video"
+                            tabindex="0"
+                        >
+                            ${ICONS.play}
                         </button>
-                        <button class="control-btn mute-btn" data-video-id="${video.id}" aria-label="Mute/Unmute">
-                            🔇
+                        <button 
+                            class="control-btn mute-btn" 
+                            data-video-id="${video.id}" 
+                            aria-label="Mute"
+                            aria-pressed="true"
+                            tabindex="0"
+                            style="display: none;"
+                        >
+                            ${ICONS.muted}
                         </button>
                     </div>
                 `;
 
                 grid.appendChild(card);
             });
+
+            // Setup control listeners
+            setupControlListeners();
         }
 
-        // Initialize YouTube players when API is ready
-        window.onYouTubeIframeAPIReady = function() {
-            shortsData.forEach(video => {
-                createPlayer(video.id);
+        // Add YouTube preconnects on first interaction
+        function addPreconnects() {
+            if (state.preconnectsAdded) return;
+            
+            const preconnects = [
+                'https://www.youtube.com',
+                'https://www.google.com',
+                'https://i.ytimg.com'
+            ];
+
+            preconnects.forEach(url => {
+                const link = document.createElement('link');
+                link.rel = 'preconnect';
+                link.href = url;
+                link.crossOrigin = 'anonymous';
+                document.head.appendChild(link);
             });
 
-            // Setup Intersection Observer for lazy loading
-            setupLazyLoading();
+            state.preconnectsAdded = true;
+        }
 
-            // Setup control button listeners
-            setupControlButtons();
+        // Load YouTube IFrame API (deferred until first play)
+        function loadYouTubeAPI() {
+            if (state.ytApiLoading || state.ytApiReady) return;
+            
+            state.ytApiLoading = true;
+            
+            const tag = document.createElement('script');
+            tag.src = 'https://www.youtube.com/iframe_api';
+            const firstScript = document.getElementsByTagName('script')[0];
+            firstScript.parentNode.insertBefore(tag, firstScript);
+        }
+
+        // Called by YouTube API when ready
+        window.onYouTubeIframeAPIReady = function() {
+            state.ytApiReady = true;
+            console.log('[Shorts Gallery] YouTube API ready');
         };
 
-        // Create individual YouTube player
+        // Create iframe and player for specific video
         function createPlayer(videoId) {
-            players[videoId] = new YT.Player(`player-${videoId}`, {
-                videoId: videoId,
-                playerVars: {
-                    autoplay: 0,           // Don't autoplay
-                    controls: 0,           // Hide YouTube controls
-                    modestbranding: 1,     // Minimal YouTube branding
-                    rel: 0,                // Don't show related videos
-                    fs: 0,                 // No fullscreen button
-                    iv_load_policy: 3,     // Hide annotations
-                    disablekb: 1,          // Disable keyboard controls
-                    playsinline: 1,        // Play inline on mobile
-                    mute: 1,               // Start muted
-                    loop: 1,               // Loop the video
-                    playlist: videoId      // Required for loop to work
-                },
-                events: {
-                    onReady: onPlayerReady,
-                    onStateChange: onPlayerStateChange
+            return new Promise((resolve, reject) => {
+                const container = document.querySelector(`[data-video-id="${videoId}"] .short-video-container`);
+                if (!container) {
+                    reject(new Error('Container not found'));
+                    return;
+                }
+
+                // Remove poster
+                const poster = container.querySelector('.short-poster');
+                if (poster) poster.remove();
+
+                // Create iframe container
+                const playerDiv = document.createElement('div');
+                playerDiv.id = `player-${videoId}`;
+                container.appendChild(playerDiv);
+
+                // Show loading
+                const loading = document.createElement('div');
+                loading.className = 'short-loading';
+                container.appendChild(loading);
+
+                try {
+                    // Create YouTube player with iframe
+                    const origin = encodeURIComponent(window.location.origin);
+                    state.players[videoId] = new YT.Player(playerDiv, {
+                        videoId: videoId,
+                        playerVars: {
+                            autoplay: 1,
+                            controls: 0,
+                            modestbranding: 1,
+                            rel: 0,
+                            playsinline: 1,
+                            fs: 0,
+                            iv_load_policy: 3,
+                            disablekb: 1,
+                            mute: 1,
+                            origin: window.location.origin
+                        },
+                        events: {
+                            onReady: (event) => {
+                                loading.remove();
+                                resolve(event.target);
+                            },
+                            onStateChange: (event) => handleStateChange(event, videoId),
+                            onError: (event) => handlePlayerError(event, videoId)
+                        }
+                    });
+                } catch (error) {
+                    console.error(`[Shorts Gallery] Error creating player for ${videoId}:`, error);
+                    loading.remove();
+                    showFallback(videoId);
+                    reject(error);
                 }
             });
-        }
-
-        // When player is ready, hide loading spinner
-        function onPlayerReady(event) {
-            const iframe = event.target.getIframe();
-            const container = iframe.closest('.short-video-container');
-            const loading = container.querySelector('.short-loading');
-            if (loading) {
-                loading.style.display = 'none';
-            }
         }
 
         // Handle player state changes
-        function onPlayerStateChange(event) {
-            const iframe = event.target.getIframe();
-            const videoId = iframe.id.replace('player-', '');
+        function handleStateChange(event, videoId) {
             const title = document.getElementById(`title-${videoId}`);
-            const playPauseBtn = document.querySelector(`.play-pause-btn[data-video-id="${videoId}"]`);
+            const playBtn = document.querySelector(`.play-pause-btn[data-video-id="${videoId}"]`);
+            const muteBtn = document.querySelector(`.mute-btn[data-video-id="${videoId}"]`);
 
-            // YT.PlayerState: -1 (unstarted), 0 (ended), 1 (playing), 2 (paused), 3 (buffering), 5 (cued)
-            if (event.data === YT.PlayerState.PLAYING) {
-                // Hide title when playing
-                if (title) title.classList.add('hidden');
-                if (playPauseBtn) playPauseBtn.textContent = '⏸️';
+            switch(event.data) {
+                case YT.PlayerState.PLAYING:
+                    // Hide title, show pause icon
+                    if (title) title.classList.add('hidden');
+                    if (playBtn) {
+                        playBtn.innerHTML = ICONS.pause;
+                        playBtn.setAttribute('aria-label', 'Pause video');
+                    }
+                    if (muteBtn) muteBtn.style.display = 'flex';
 
-                // Pause other videos
-                if (currentlyPlayingId && currentlyPlayingId !== videoId) {
-                    pauseVideo(currentlyPlayingId);
-                }
-                currentlyPlayingId = videoId;
-            } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
-                // Show title when paused
-                if (title) title.classList.remove('hidden');
-                if (playPauseBtn) playPauseBtn.textContent = '▶️';
-                
-                if (currentlyPlayingId === videoId) {
-                    currentlyPlayingId = null;
-                }
+                    // Pause other videos
+                    if (state.currentPlaying && state.currentPlaying !== videoId) {
+                        pauseVideo(state.currentPlaying);
+                    }
+                    state.currentPlaying = videoId;
+
+                    // Prefetch next video
+                    prefetchNextVideo(videoId);
+                    break;
+
+                case YT.PlayerState.PAUSED:
+                case YT.PlayerState.ENDED:
+                    // Show title, show play icon
+                    if (title) title.classList.remove('hidden');
+                    if (playBtn) {
+                        playBtn.innerHTML = ICONS.play;
+                        playBtn.setAttribute('aria-label', 'Play video');
+                    }
+                    if (state.currentPlaying === videoId) {
+                        state.currentPlaying = null;
+                    }
+                    break;
+            }
+        }
+
+        // Handle player errors (embed disabled, etc.)
+        function handlePlayerError(event, videoId) {
+            const errorCode = event.data;
+            console.error(`[Shorts Gallery] Player error ${errorCode} for video ${videoId}`);
+            
+            // Error codes: 2 (invalid), 5 (HTML5), 100 (not found), 101/150 (embed disabled)
+            if ([100, 101, 150].includes(errorCode)) {
+                showFallback(videoId);
+            }
+        }
+
+        // Show fallback for blocked videos
+        function showFallback(videoId) {
+            const card = document.querySelector(`[data-video-id="${videoId}"]`);
+            if (!card) return;
+
+            const container = card.querySelector('.short-video-container');
+            const loading = container.querySelector('.short-loading');
+            if (loading) loading.remove();
+
+            // Add fallback badge
+            const badge = document.createElement('div');
+            badge.className = 'fallback-badge';
+            badge.textContent = 'Opens on YouTube';
+            card.appendChild(badge);
+
+            // Make card clickable to open YouTube
+            card.style.cursor = 'pointer';
+            card.onclick = () => {
+                window.open(`https://youtube.com/shorts/${videoId}`, '_blank');
+            };
+        }
+
+        // Prefetch next video iframe
+        function prefetchNextVideo(currentId) {
+            const currentIndex = shortsData.findIndex(v => v.id === currentId);
+            if (currentIndex === -1 || currentIndex === shortsData.length - 1) return;
+
+            const nextVideo = shortsData[currentIndex + 1];
+            if (!state.players[nextVideo.id]) {
+                // Low priority preconnect for next video
+                const link = document.createElement('link');
+                link.rel = 'preconnect';
+                link.href = `https://www.youtube.com/embed/${nextVideo.id}`;
+                link.as = 'document';
+                document.head.appendChild(link);
             }
         }
 
         // Pause specific video
         function pauseVideo(videoId) {
-            if (players[videoId]) {
-                players[videoId].pauseVideo();
+            const player = state.players[videoId];
+            if (player && player.pauseVideo) {
+                player.pauseVideo();
             }
         }
 
-        // Setup lazy loading with Intersection Observer
-        function setupLazyLoading() {
-            const options = {
-                root: null,
-                rootMargin: '50px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const card = entry.target;
-                        card.classList.add('animated');
-                    }
-                });
-            }, options);
-
-            // Observe all short cards
-            document.querySelectorAll('.short-card').forEach(card => {
-                observer.observe(card);
-            });
-        }
-
-        // Setup control button event listeners
-        function setupControlButtons() {
+        // Setup control button listeners
+        function setupControlListeners() {
             // Play/Pause buttons
             document.querySelectorAll('.play-pause-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
+                const videoId = btn.getAttribute('data-video-id');
+
+                // Click handler
+                btn.addEventListener('click', async (e) => {
                     e.stopPropagation();
-                    const videoId = btn.getAttribute('data-video-id');
-                    const player = players[videoId];
-                    
-                    if (player) {
-                        const state = player.getPlayerState();
-                        if (state === YT.PlayerState.PLAYING) {
-                            player.pauseVideo();
-                        } else {
-                            player.playVideo();
-                        }
+                    await handlePlayPause(videoId);
+                });
+
+                // Keyboard accessibility
+                btn.addEventListener('keydown', async (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        await handlePlayPause(videoId);
                     }
                 });
             });
 
             // Mute/Unmute buttons
             document.querySelectorAll('.mute-btn').forEach(btn => {
+                const videoId = btn.getAttribute('data-video-id');
+
+                // Click handler
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    const videoId = btn.getAttribute('data-video-id');
-                    const player = players[videoId];
-                    
-                    if (player) {
-                        if (player.isMuted()) {
-                            player.unMute();
-                            btn.textContent = '🔊';
-                        } else {
-                            player.mute();
-                            btn.textContent = '🔇';
-                        }
+                    handleMuteToggle(videoId, btn);
+                });
+
+                // Keyboard accessibility
+                btn.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        handleMuteToggle(videoId, btn);
                     }
                 });
             });
+        }
+
+        // Handle play/pause action
+        async function handlePlayPause(videoId) {
+            const player = state.players[videoId];
+
+            if (!player) {
+                // First time playing - load everything
+                addPreconnects();
+                loadYouTubeAPI();
+
+                // Wait for API to be ready
+                if (!state.ytApiReady) {
+                    await new Promise(resolve => {
+                        const check = setInterval(() => {
+                            if (state.ytApiReady) {
+                                clearInterval(check);
+                                resolve();
+                            }
+                        }, 100);
+                    });
+                }
+
+                // Create player and start playing
+                try {
+                    await createPlayer(videoId);
+                } catch (error) {
+                    console.error('[Shorts Gallery] Failed to create player:', error);
+                }
+            } else {
+                // Toggle play/pause
+                const state = player.getPlayerState();
+                if (state === YT.PlayerState.PLAYING) {
+                    player.pauseVideo();
+                } else {
+                    player.playVideo();
+                }
+            }
+        }
+
+        // Handle mute toggle
+        function handleMuteToggle(videoId, btn) {
+            const player = state.players[videoId];
+            if (!player) return;
+
+            if (player.isMuted()) {
+                player.unMute();
+                btn.innerHTML = ICONS.unmuted;
+                btn.setAttribute('aria-label', 'Unmute');
+                btn.setAttribute('aria-pressed', 'false');
+            } else {
+                player.mute();
+                btn.innerHTML = ICONS.muted;
+                btn.setAttribute('aria-label', 'Mute');
+                btn.setAttribute('aria-pressed', 'true');
+            }
         }
 
         // Initialize on DOM ready
