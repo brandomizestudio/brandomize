@@ -417,14 +417,14 @@
             object-fit: cover;
         }
 
-        /* === REELS SECTION === */
-        .reels-section {
+        /* === YOUTUBE SHORTS GALLERY === */
+        .shorts-gallery-section {
             padding: 6rem 0;
             background: var(--bg-white);
         }
 
         @media (max-width: 768px) {
-            .reels-section {
+            .shorts-gallery-section {
                 padding: 4rem 0;
             }
         }
@@ -468,71 +468,155 @@
             line-height: 1.7;
         }
 
-        .reels-scroll-container {
+        /* Shorts Container */
+        .shorts-scroll-container {
             overflow-x: auto;
             overflow-y: hidden;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            padding: 1rem 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) var(--bg-gray);
+            padding: 2rem 0;
         }
 
-        .reels-scroll-container::-webkit-scrollbar {
-            display: none;
+        .shorts-scroll-container::-webkit-scrollbar {
+            height: 6px;
         }
 
-        .reels-grid {
+        .shorts-scroll-container::-webkit-scrollbar-track {
+            background: var(--bg-gray);
+            border-radius: 10px;
+        }
+
+        .shorts-scroll-container::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .shorts-grid {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
             padding: 0 2rem;
             min-width: min-content;
         }
 
-        .reel-card {
+        /* Individual Short Card */
+        .short-card {
             flex: 0 0 300px;
-            background: var(--bg-gray);
-            border-radius: 20px;
-            overflow: hidden;
+            height: 540px;
             position: relative;
-            aspect-ratio: 9/16;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .reel-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px var(--shadow);
+        @media (max-width: 768px) {
+            .short-card {
+                flex: 0 0 260px;
+                height: 462px;
+            }
         }
 
-        .reel-video {
+        .short-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        /* YouTube IFrame Container */
+        .short-video-container {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            position: relative;
         }
 
-        .reel-overlay {
+        .short-video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: auto;
+        }
+
+        /* Video Title Overlay */
+        .short-title {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            padding: 2rem 1.5rem 1.5rem;
+            padding: 2.5rem 1.5rem 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
             color: white;
-        }
-
-        .reel-title {
             font-size: 1.125rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            z-index: 2;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: none;
         }
 
-        .reel-views {
-            font-size: 0.875rem;
-            opacity: 0.9;
+        .short-title.hidden {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        /* Custom Controls */
+        .short-controls {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .short-card:hover .short-controls {
+            opacity: 1;
+        }
+
+        .control-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.125rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .control-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Loading Spinner */
+        .short-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
         /* === SECTION STYLES === */
@@ -866,45 +950,228 @@
 
         /* === CONTENT SECTION === */
         .content-section {
-            padding: 4rem 0;
+            padding: 6rem 0;
             background: white;
         }
 
-        .content-text {
-            max-width: 900px;
-            margin: 0 auto;
-            font-size: 1.125rem;
-            line-height: 1.8;
-            color: var(--text-gray);
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 4rem 0;
+            }
         }
 
-        .content-text h2 {
+        /* Visual Services Section */
+        .visual-services-section {
+            margin: 4rem 0;
+        }
+
+        .visual-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .visual-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .visual-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        .visual-services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .visual-services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .visual-services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .visual-service-card {
+            background: var(--bg-white);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .visual-service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px var(--shadow);
+            border-color: var(--primary);
+        }
+
+        .visual-service-image {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+        }
+
+        .visual-service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .visual-service-card:hover .visual-service-image img {
+            transform: scale(1.1);
+        }
+
+        .visual-service-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .visual-service-content {
+            padding: 2rem;
+        }
+
+        .visual-service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .visual-service-content h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .visual-service-content p {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Local Coverage Section */
+        .local-coverage-section {
+            margin-top: 6rem;
+            padding: 4rem 0;
+            background: var(--bg-gray);
+            border-radius: 24px;
+        }
+
+        .local-coverage-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .local-coverage-grid {
+                grid-template-columns: 1.2fr 1fr;
+            }
+        }
+
+        .local-coverage-content h3 {
             font-size: 2rem;
             font-weight: 700;
             color: var(--text-dark);
             margin-bottom: 1.5rem;
-            margin-top: 2rem;
         }
 
-        .content-text h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
+        .local-coverage-content p {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .local-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .local-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+        }
+
+        .local-stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .local-stat-label {
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .local-coverage-visual {
+            position: relative;
+        }
+
+        .map-placeholder {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .map-placeholder img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .map-marker {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .marker-pin {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .marker-label {
+            font-size: 1rem;
+            font-weight: 700;
             color: var(--text-dark);
-            margin-bottom: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .content-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .content-text ul {
-            margin: 1.5rem 0;
-            padding-left: 2rem;
-        }
-
-        .content-text li {
-            margin-bottom: 0.75rem;
+            white-space: nowrap;
         }
 
         /* === FAQ SECTION === */
@@ -1028,123 +1295,148 @@
         </div>
     </section>
 
-    <!-- Reels Section (2nd Section - ADDED BACK) -->
-    <section class="reels-section">
+    <!-- YouTube Shorts Gallery Section -->
+    <section class="shorts-gallery-section">
         <div class="container">
             <div class="section-header animate-on-scroll">
                 <span class="section-tag">VIRAL CONTENT</span>
                 <h2 class="section-title">Best Reel Creators in Hisar</h2>
-                <p class="section-description">Creative Instagram reels and YouTube videos that make Hisar brands go viral and drive real business results.</p>
+                <p class="section-description">Creative YouTube Shorts that make Hisar brands go viral and drive real business results.</p>
             </div>
         </div>
-        <div class="reels-scroll-container">
-            <div class="reels-grid">
-                <div class="reel-card animate-on-scroll">
-                    <video class="reel-video" poster="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=300" controls>
-                        <source src="Reels/1.MOV" type="video/quicktime">
-                        <source src="Reels/1.mp4" type="video/mp4">
-                    </video>
-                    <div class="reel-overlay">
-                        <h3 class="reel-title">Antique Store</h3>
-                        <p class="reel-views">👁 2.1M views</p>
-                    </div>
-                </div>
-                <div class="reel-card animate-on-scroll">
-                    <video class="reel-video" poster="https://images.unsplash.com/photo-1551434678-e076c223a692?w=300" controls>
-                        <source src="Reels/2.MOV" type="video/quicktime">
-                        <source src="Reels/2.mp4" type="video/mp4">
-                    </video>
-                    <div class="reel-overlay">
-                        <h3 class="reel-title">CP Plus Security</h3>
-                        <p class="reel-views">👁 1.8M views</p>
-                    </div>
-                </div>
-                <div class="reel-card animate-on-scroll">
-                    <video class="reel-video" poster="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300" controls>
-                        <source src="Reels/3.MOV" type="video/quicktime">
-                        <source src="Reels/3.mp4" type="video/mp4">
-                    </video>
-                    <div class="reel-overlay">
-                        <h3 class="reel-title">Detailing Mafia</h3>
-                        <p class="reel-views">👁 3.2M views</p>
-                    </div>
-                </div>
-                <div class="reel-card animate-on-scroll">
-                    <video class="reel-video" poster="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=300" controls>
-                        <source src="Reels/4.MOV" type="video/quicktime">
-                        <source src="Reels/4.mp4" type="video/mp4">
-                    </video>
-                    <div class="reel-overlay">
-                        <h3 class="reel-title">Maruti Jimny</h3>
-                        <p class="reel-views">👁 950K views</p>
-                    </div>
-                </div>
-                <div class="reel-card animate-on-scroll">
-                    <video class="reel-video" poster="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=300" controls>
-                        <source src="Reels/5.MOV" type="video/quicktime">
-                        <source src="Reels/5.mp4" type="video/mp4">
-                    </video>
-                    <div class="reel-overlay">
-                        <h3 class="reel-title">Pure Roots</h3>
-                        <p class="reel-views">👁 2.7M views</p>
-                    </div>
-                </div>
-                <div class="reel-card animate-on-scroll">
-                    <video class="reel-video" poster="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=300" controls>
-                        <source src="Reels/6.MOV" type="video/quicktime">
-                        <source src="Reels/6.mp4" type="video/mp4">
-                    </video>
-                    <div class="reel-overlay">
-                        <h3 class="reel-title">Trident Building</h3>
-                        <p class="reel-views">👁 1.4M views</p>
-                    </div>
-                </div>
-                <div class="reel-card animate-on-scroll">
-                    <video class="reel-video" poster="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=300" controls>
-                        <source src="Reels/7.MOV" type="video/quicktime">
-                        <source src="Reels/7.mp4" type="video/mp4">
-                    </video>
-                    <div class="reel-overlay">
-                        <h3 class="reel-title">Maruti Jimny Off-Road</h3>
-                        <p class="reel-views">👁 4.1M views</p>
-                    </div>
-                </div>
-                <div class="reel-card animate-on-scroll">
-                    <video class="reel-video" poster="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=300" controls>
-                        <source src="Reels/8.MOV" type="video/quicktime">
-                        <source src="Reels/8.mp4" type="video/mp4">
-                    </video>
-                    <div class="reel-overlay">
-                        <h3 class="reel-title">Pure Roots Natural</h3>
-                        <p class="reel-views">👁 1.2M views</p>
-                    </div>
-                </div>
+        
+        <!-- Horizontal Scrolling YouTube Shorts Container -->
+        <div class="shorts-scroll-container">
+            <div class="shorts-grid" id="shortsGrid">
+                <!-- Video cards will be dynamically generated here -->
             </div>
         </div>
     </section>
 
-    <!-- SEO Content Section (for text/code ratio) -->
+    <!-- SEO Content Section - Visual & Engaging -->
     <section class="content-section">
         <div class="container">
-            <div class="content-text">
-                <h2>Why Choose Brandomize as Your Marketing Partner in Hisar?</h2>
-                <p>Brandomize is Hisar's premier creative and marketing agency, dedicated to helping businesses across Haryana and India build powerful brands through innovative digital strategies. As the <strong>best marketing agency in Hisar</strong>, we combine creativity with data-driven insights to deliver exceptional results for our clients.</p>
-                
-                <h3>Our Comprehensive Marketing Services in Hisar</h3>
-                <p>As <strong>Hisar's leading reel creators</strong>, we specialize in creating viral short-form video content that captures attention and drives engagement. Our services include:</p>
-                <ul>
-                    <li><strong>Viral Reel Production:</strong> Professional Instagram and YouTube reel creation with over 5 million views generated</li>
-                    <li><strong>Web Development in Hisar:</strong> Modern, responsive websites that convert visitors into customers</li>
-                    <li><strong>iOS App Development:</strong> Custom mobile applications designed for business growth</li>
-                    <li><strong>Brand Identity Design:</strong> Complete branding solutions from logo to brand guidelines</li>
-                    <li><strong>Social Media Management:</strong> Full-service content creation and community management</li>
-                    <li><strong>Product Photography:</strong> Professional product shoots that showcase your brand's quality</li>
-                </ul>
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">WHY CHOOSE US</span>
+                <h2 class="section-title">Why Choose Brandomize as Your Marketing Partner in Hisar?</h2>
+                <p class="section-description">Brandomize is Hisar's premier creative and marketing agency, dedicated to helping businesses across Haryana and India build powerful brands through innovative digital strategies. As the <strong>best marketing agency in Hisar</strong>, we combine creativity with data-driven insights to deliver exceptional results for our clients.</p>
+            </div>
 
-                <h3>Serving Businesses Across Hisar and Haryana</h3>
-                <p>Located in Sector 15, Hisar, we serve businesses throughout Haryana including Delhi NCR and Punjab. Our local expertise combined with global standards makes us the preferred choice for businesses looking to establish a strong digital presence in North India.</p>
+            <!-- Visual Services Grid -->
+            <div class="visual-services-section">
+                <div class="visual-header animate-on-scroll">
+                    <h3 class="visual-title">Our Comprehensive Marketing Services in Hisar</h3>
+                    <p class="visual-subtitle">As <strong>Hisar's leading reel creators</strong>, we specialize in creating viral short-form video content that captures attention and drives engagement.</p>
+                </div>
                 
-                <p>Whether you're a startup looking to make your mark or an established business wanting to scale, Brandomize has the experience, creativity, and strategic thinking to help you achieve your goals. Contact us today to discover how we can transform your brand.</p>
+                <div class="visual-services-grid">
+                    <div class="visual-service-card animate-on-scroll">
+                        <div class="visual-service-image">
+                            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=300&fit=crop" alt="Viral reel production services by best reel creator in Hisar" loading="lazy">
+                            <div class="visual-service-badge">5M+ Views</div>
+                        </div>
+                        <div class="visual-service-content">
+                            <div class="visual-service-icon">🎬</div>
+                            <h4>Viral Reel Production</h4>
+                            <p>Professional Instagram and YouTube reel creation with over 5 million views generated for Hisar businesses</p>
+                        </div>
+                    </div>
+
+                    <div class="visual-service-card animate-on-scroll">
+                        <div class="visual-service-image">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Web development in Hisar by best web developer" loading="lazy">
+                            <div class="visual-service-badge">100+ Sites</div>
+                        </div>
+                        <div class="visual-service-content">
+                            <div class="visual-service-icon">💻</div>
+                            <h4>Web Development in Hisar</h4>
+                            <p>Modern, responsive websites that convert visitors into customers with cutting-edge design</p>
+                        </div>
+                    </div>
+
+                    <div class="visual-service-card animate-on-scroll">
+                        <div class="visual-service-image">
+                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop" alt="iOS app development services in Hisar" loading="lazy">
+                            <div class="visual-service-badge">50+ Apps</div>
+                        </div>
+                        <div class="visual-service-content">
+                            <div class="visual-service-icon">📱</div>
+                            <h4>iOS App Development</h4>
+                            <p>Custom mobile applications designed for business growth with Swift and SwiftUI</p>
+                        </div>
+                    </div>
+
+                    <div class="visual-service-card animate-on-scroll">
+                        <div class="visual-service-image">
+                            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop" alt="Brand identity design services in Hisar by creative agency" loading="lazy">
+                            <div class="visual-service-badge">300+ Brands</div>
+                        </div>
+                        <div class="visual-service-content">
+                            <div class="visual-service-icon">🎨</div>
+                            <h4>Brand Identity Design</h4>
+                            <p>Complete branding solutions from logo to brand guidelines that make you stand out</p>
+                        </div>
+                    </div>
+
+                    <div class="visual-service-card animate-on-scroll">
+                        <div class="visual-service-image">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=300&fit=crop" alt="Social media management services in Hisar" loading="lazy">
+                            <div class="visual-service-badge">5M+ Reach</div>
+                        </div>
+                        <div class="visual-service-content">
+                            <div class="visual-service-icon">📊</div>
+                            <h4>Social Media Management</h4>
+                            <p>Full-service content creation and community management across all platforms</p>
+                        </div>
+                    </div>
+
+                    <div class="visual-service-card animate-on-scroll">
+                        <div class="visual-service-image">
+                            <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=400&h=300&fit=crop" alt="Product photography services by Hisar marketing agency" loading="lazy">
+                            <div class="visual-service-badge">1000+ Shoots</div>
+                        </div>
+                        <div class="visual-service-content">
+                            <div class="visual-service-icon">📸</div>
+                            <h4>Product Photography</h4>
+                            <p>Professional product shoots that showcase your brand's quality and attract buyers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Local Coverage Section with Map Visual -->
+            <div class="local-coverage-section animate-on-scroll">
+                <div class="local-coverage-grid">
+                    <div class="local-coverage-content">
+                        <h3>Serving Businesses Across Hisar and Haryana</h3>
+                        <p>Located in <strong>Sector 15, Hisar</strong>, we serve businesses throughout <strong>Haryana</strong> including Delhi NCR and Punjab. Our local expertise combined with global standards makes us the preferred choice for businesses looking to establish a strong digital presence in North India.</p>
+                        <div class="local-stats">
+                            <div class="local-stat-item">
+                                <div class="local-stat-number">300+</div>
+                                <div class="local-stat-label">Hisar Businesses Served</div>
+                            </div>
+                            <div class="local-stat-item">
+                                <div class="local-stat-number">5+</div>
+                                <div class="local-stat-label">Years in Hisar</div>
+                            </div>
+                            <div class="local-stat-item">
+                                <div class="local-stat-number">100%</div>
+                                <div class="local-stat-label">Client Satisfaction</div>
+                            </div>
+                        </div>
+                        <p><strong>Whether you're a startup looking to make your mark or an established business wanting to scale</strong>, Brandomize has the experience, creativity, and strategic thinking to help you achieve your goals. Contact us today to discover how we can transform your brand.</p>
+                        <a href="https://wa.me/917404355477" class="btn btn-primary">Start Your Project in Hisar</a>
+                    </div>
+                    <div class="local-coverage-visual">
+                        <div class="map-placeholder">
+                            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&h=400&fit=crop" alt="Brandomize serving businesses in Hisar, Haryana and North India" loading="lazy">
+                            <div class="map-marker">
+                                <div class="marker-pin">📍</div>
+                                <div class="marker-label">Sector 15, Hisar</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1530,6 +1822,219 @@
             });
         });
     </script>
+
+    <!-- YouTube Shorts Gallery Script -->
+    <script>
+        // ===================================
+        // YOUTUBE SHORTS GALLERY IMPLEMENTATION
+        // ===================================
+
+        // Video data: YouTube Shorts links and titles
+        const shortsData = [
+            { url: 'https://youtube.com/shorts/cQ1OIWVRdTo', title: 'Marketing trick', id: 'cQ1OIWVRdTo' },
+            { url: 'https://youtube.com/shorts/jA9m-YKOgWg', title: 'Gym Before and After', id: 'jA9m-YKOgWg' },
+            { url: 'https://youtube.com/shorts/RnAiabu32ME', title: 'Diksha Mehta Gym', id: 'RnAiabu32ME' },
+            { url: 'https://youtube.com/shorts/tLFP1lH0_Gg', title: 'Pure Roots', id: 'tLFP1lH0_Gg' },
+            { url: 'https://youtube.com/shorts/Ss0rUFmuoH4', title: 'CP Plus', id: 'Ss0rUFmuoH4' },
+            { url: 'https://youtube.com/shorts/cvV75bMyaH4', title: 'Antique Store', id: 'cvV75bMyaH4' },
+            { url: 'https://youtube.com/shorts/_ytesexp_Ew', title: 'Trident Building', id: '_ytesexp_Ew' }
+        ];
+
+        // Store YouTube player instances
+        const players = {};
+        let currentlyPlayingId = null;
+
+        // Load YouTube IFrame API
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // Generate HTML for all video cards
+        function generateShortsCards() {
+            const grid = document.getElementById('shortsGrid');
+            if (!grid) return;
+
+            shortsData.forEach((video, index) => {
+                const card = document.createElement('div');
+                card.className = 'short-card animate-on-scroll';
+                card.setAttribute('data-video-id', video.id);
+                card.setAttribute('data-index', index);
+
+                card.innerHTML = `
+                    <div class="short-video-container">
+                        <div class="short-loading"></div>
+                        <div id="player-${video.id}" class="youtube-player"></div>
+                    </div>
+                    <div class="short-title" id="title-${video.id}">${video.title}</div>
+                    <div class="short-controls">
+                        <button class="control-btn play-pause-btn" data-video-id="${video.id}" aria-label="Play/Pause">
+                            ▶️
+                        </button>
+                        <button class="control-btn mute-btn" data-video-id="${video.id}" aria-label="Mute/Unmute">
+                            🔇
+                        </button>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // Initialize YouTube players when API is ready
+        window.onYouTubeIframeAPIReady = function() {
+            shortsData.forEach(video => {
+                createPlayer(video.id);
+            });
+
+            // Setup Intersection Observer for lazy loading
+            setupLazyLoading();
+
+            // Setup control button listeners
+            setupControlButtons();
+        };
+
+        // Create individual YouTube player
+        function createPlayer(videoId) {
+            players[videoId] = new YT.Player(`player-${videoId}`, {
+                videoId: videoId,
+                playerVars: {
+                    autoplay: 0,           // Don't autoplay
+                    controls: 0,           // Hide YouTube controls
+                    modestbranding: 1,     // Minimal YouTube branding
+                    rel: 0,                // Don't show related videos
+                    fs: 0,                 // No fullscreen button
+                    iv_load_policy: 3,     // Hide annotations
+                    disablekb: 1,          // Disable keyboard controls
+                    playsinline: 1,        // Play inline on mobile
+                    mute: 1,               // Start muted
+                    loop: 1,               // Loop the video
+                    playlist: videoId      // Required for loop to work
+                },
+                events: {
+                    onReady: onPlayerReady,
+                    onStateChange: onPlayerStateChange
+                }
+            });
+        }
+
+        // When player is ready, hide loading spinner
+        function onPlayerReady(event) {
+            const iframe = event.target.getIframe();
+            const container = iframe.closest('.short-video-container');
+            const loading = container.querySelector('.short-loading');
+            if (loading) {
+                loading.style.display = 'none';
+            }
+        }
+
+        // Handle player state changes
+        function onPlayerStateChange(event) {
+            const iframe = event.target.getIframe();
+            const videoId = iframe.id.replace('player-', '');
+            const title = document.getElementById(`title-${videoId}`);
+            const playPauseBtn = document.querySelector(`.play-pause-btn[data-video-id="${videoId}"]`);
+
+            // YT.PlayerState: -1 (unstarted), 0 (ended), 1 (playing), 2 (paused), 3 (buffering), 5 (cued)
+            if (event.data === YT.PlayerState.PLAYING) {
+                // Hide title when playing
+                if (title) title.classList.add('hidden');
+                if (playPauseBtn) playPauseBtn.textContent = '⏸️';
+
+                // Pause other videos
+                if (currentlyPlayingId && currentlyPlayingId !== videoId) {
+                    pauseVideo(currentlyPlayingId);
+                }
+                currentlyPlayingId = videoId;
+            } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+                // Show title when paused
+                if (title) title.classList.remove('hidden');
+                if (playPauseBtn) playPauseBtn.textContent = '▶️';
+                
+                if (currentlyPlayingId === videoId) {
+                    currentlyPlayingId = null;
+                }
+            }
+        }
+
+        // Pause specific video
+        function pauseVideo(videoId) {
+            if (players[videoId]) {
+                players[videoId].pauseVideo();
+            }
+        }
+
+        // Setup lazy loading with Intersection Observer
+        function setupLazyLoading() {
+            const options = {
+                root: null,
+                rootMargin: '50px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const card = entry.target;
+                        card.classList.add('animated');
+                    }
+                });
+            }, options);
+
+            // Observe all short cards
+            document.querySelectorAll('.short-card').forEach(card => {
+                observer.observe(card);
+            });
+        }
+
+        // Setup control button event listeners
+        function setupControlButtons() {
+            // Play/Pause buttons
+            document.querySelectorAll('.play-pause-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const videoId = btn.getAttribute('data-video-id');
+                    const player = players[videoId];
+                    
+                    if (player) {
+                        const state = player.getPlayerState();
+                        if (state === YT.PlayerState.PLAYING) {
+                            player.pauseVideo();
+                        } else {
+                            player.playVideo();
+                        }
+                    }
+                });
+            });
+
+            // Mute/Unmute buttons
+            document.querySelectorAll('.mute-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const videoId = btn.getAttribute('data-video-id');
+                    const player = players[videoId];
+                    
+                    if (player) {
+                        if (player.isMuted()) {
+                            player.unMute();
+                            btn.textContent = '🔊';
+                        } else {
+                            player.mute();
+                            btn.textContent = '🔇';
+                        }
+                    }
+                });
+            });
+        }
+
+        // Initialize on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', generateShortsCards);
+        } else {
+            generateShortsCards();
+        }
+    </script>
+
     <script src="scroll-animations.js"></script>
 </body>
 </html>
