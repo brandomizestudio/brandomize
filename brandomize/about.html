@@ -208,14 +208,19 @@
             transform: translateY(-1px);
         }
 
+        /* === HAMBURGER MENU BUTTON === */
         .hamburger {
             display: flex;
-            flex-direction: column;
-            gap: 5px;
+            align-items: center;
+            justify-content: center;
             background: none;
             border: none;
             cursor: pointer;
             padding: 0.5rem;
+            width: 44px;
+            height: 44px;
+            position: relative;
+            z-index: 1001;
         }
 
         @media (min-width: 768px) {
@@ -224,12 +229,18 @@
             }
         }
 
-        .hamburger span {
+        .hamburger svg {
             width: 24px;
-            height: 2px;
-            background: var(--text-dark);
-            border-radius: 2px;
+            height: 24px;
+            stroke: var(--text-dark);
+            stroke-width: 2px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
             transition: all 0.3s ease;
+        }
+
+        .hamburger:hover svg {
+            stroke: var(--primary);
         }
 
         /* === HERO === */
@@ -558,39 +569,96 @@
         }
 
         /* === MOBILE MENU === */
+        /* === MOBILE MENU - SMOOTH EXPANDING ANIMATION === */
         @media (max-width: 767px) {
             .nav-menu {
                 position: fixed;
-                top: 80px;
-                left: 0;
-                right: 0;
-                background: white;
+                top: calc(1rem + 80px); /* Position below floating navbar */
+                left: 1rem;
+                right: 1rem;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(24px) saturate(180%);
+                -webkit-backdrop-filter: blur(24px) saturate(180%);
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                border-radius: 20px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 
+                            0 4px 16px rgba(0, 0, 0, 0.06);
                 flex-direction: column;
-                padding: 2rem;
-                box-shadow: 0 4px 20px var(--shadow);
-                transform: translateY(-100%);
+                padding: 0;
+                overflow: hidden;
+                
+                /* Smooth animation properties */
+                max-height: 0;
                 opacity: 0;
+                transform: translateY(-10px);
                 visibility: hidden;
-                transition: all 0.3s ease;
+                transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                            opacity 0.3s ease,
+                            transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                            visibility 0s linear 0.4s;
                 display: flex;
             }
 
             .nav-menu.active {
-                transform: translateY(0);
+                max-height: 500px;
                 opacity: 1;
+                transform: translateY(0);
                 visibility: visible;
+                padding: 2rem 1.5rem;
+                transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                            opacity 0.3s ease 0.1s,
+                            transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                            visibility 0s linear 0s;
             }
 
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            .hamburger.active span:nth-child(2) {
+            /* Staggered fade-in for menu items */
+            .nav-menu li {
                 opacity: 0;
+                transform: translateY(-5px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
             }
 
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -7px);
+            .nav-menu.active li {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .nav-menu.active li:nth-child(1) { transition-delay: 0.05s; }
+            .nav-menu.active li:nth-child(2) { transition-delay: 0.1s; }
+            .nav-menu.active li:nth-child(3) { transition-delay: 0.15s; }
+            .nav-menu.active li:nth-child(4) { transition-delay: 0.2s; }
+            .nav-menu.active li:nth-child(5) { transition-delay: 0.25s; }
+
+            .nav-menu li {
+                margin-bottom: 0.5rem;
+            }
+
+            .nav-menu li:last-child {
+                margin-bottom: 0;
+                margin-top: 1rem;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 0.75rem 1rem;
+                text-align: center;
+                border-radius: 12px;
+                transition: all 0.2s ease;
+            }
+
+            .nav-link:hover {
+                background: var(--bg-gray);
+            }
+
+            /* Get Started button in mobile menu */
+            .nav-buttons {
+                display: flex !important;
+                width: 100%;
+            }
+
+            .nav-buttons .btn {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -610,10 +678,18 @@
             <div class="nav-buttons">
                 <a href="https://wa.me/919034192379" class="btn btn-primary">Get Started</a>
             </div>
-            <button class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <!-- Hamburger Icon (☰) -->
+                <svg class="icon-menu" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+                <!-- Close Icon (✕) -->
+                <svg class="icon-close" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
             </button>
         </div>
     </nav>
@@ -800,19 +876,65 @@
     </footer>
 
     <script>
+        // === MOBILE MENU TOGGLE WITH SMOOTH ANIMATION ===
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
+        const iconMenu = document.querySelector('.icon-menu');
+        const iconClose = document.querySelector('.icon-close');
 
+        // Toggle menu open/close
         hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
+            const isOpen = navMenu.classList.contains('active');
+            
+            if (isOpen) {
+                // Close menu
+                navMenu.classList.remove('active');
+                iconMenu.style.display = 'block';
+                iconClose.style.display = 'none';
+                hamburger.setAttribute('aria-expanded', 'false');
+                hamburger.setAttribute('aria-label', 'Open navigation menu');
+            } else {
+                // Open menu
+                navMenu.classList.add('active');
+                iconMenu.style.display = 'none';
+                iconClose.style.display = 'block';
+                hamburger.setAttribute('aria-expanded', 'true');
+                hamburger.setAttribute('aria-label', 'Close navigation menu');
+            }
         });
 
+        // Close menu when clicking on any nav link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
+                iconMenu.style.display = 'block';
+                iconClose.style.display = 'none';
+                hamburger.setAttribute('aria-expanded', 'false');
+                hamburger.setAttribute('aria-label', 'Open navigation menu');
             });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target) && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                iconMenu.style.display = 'block';
+                iconClose.style.display = 'none';
+                hamburger.setAttribute('aria-expanded', 'false');
+                hamburger.setAttribute('aria-label', 'Open navigation menu');
+            }
+        });
+
+        // Close menu on ESC key press (accessibility)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                iconMenu.style.display = 'block';
+                iconClose.style.display = 'none';
+                hamburger.setAttribute('aria-expanded', 'false');
+                hamburger.setAttribute('aria-label', 'Open navigation menu');
+                hamburger.focus(); // Return focus to button
+            }
         });
 
         window.addEventListener('scroll', () => {
