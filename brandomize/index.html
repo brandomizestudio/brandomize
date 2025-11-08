@@ -518,6 +518,16 @@
             scrollbar-color: var(--primary) var(--bg-gray);
             padding: 2rem 0;
             scroll-snap-type: x proximity;
+            /* Add padding to prevent cards from touching edges */
+            padding-left: max(2rem, calc((100vw - 1280px) / 2));
+            padding-right: max(2rem, calc((100vw - 1280px) / 2));
+        }
+
+        @media (max-width: 768px) {
+            .shorts-scroll-container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
         }
 
         .shorts-scroll-container::-webkit-scrollbar {
@@ -537,8 +547,14 @@
         .shorts-grid {
             display: flex;
             gap: 2rem;
-            padding: 0 2rem;
+            padding: 0; /* Removed padding since container now handles spacing */
             min-width: min-content;
+        }
+
+        @media (max-width: 768px) {
+            .shorts-grid {
+                gap: 1rem; /* Smaller gap on mobile */
+            }
         }
 
         /* Individual Short Card */
